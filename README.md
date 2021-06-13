@@ -6,9 +6,12 @@
 5. Longest common subsequence
 
 # Ideas
+- Quickselect Hoare's selection algorithm
 - Union find
 - Next permutation algorithm
-  
+- Transpose a matrix: Transposition is an operation that flips the matrix over its diagonal
+- Rotate image   
+  - Transpose and Reflect!
 - Convert 2D matrix in 1D array
   - There is a formula for converting 2D matrices into 1D arrays and vice versa
     -- n * m matrix convert to an array => `matrix[x][y] => a[x * m + y]`
