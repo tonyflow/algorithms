@@ -4,7 +4,8 @@ public class Playground {
 
     public static void main(String[] args) {
         PerfectSquares perfectSquares = new PerfectSquares();
-        int min = perfectSquares.numSquares(13);
-        System.out.println(min);
+        for (int i = 1; i <= 63; i++) {
+            System.out.println("For " + i + " we need at least " + perfectSquares.numSquares(i) + " squares");
+        }
     }
 }

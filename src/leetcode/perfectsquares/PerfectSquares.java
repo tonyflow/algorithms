@@ -8,6 +8,7 @@ public class PerfectSquares {
     Map<Integer, Integer> memo = new HashMap<>();
 
     public int numSquares(int n) {
+        if (n == 1) return 1;
         int min = Integer.MAX_VALUE;
         for (int i = 1; i <= n / 2; i++) {
             min = Math.min(min, sum(n, 1, new Double(Math.pow(i, 2)).intValue()));
@@ -25,7 +26,7 @@ public class PerfectSquares {
             return Integer.MAX_VALUE;
         } else {
             int min = Integer.MAX_VALUE;
-            for (int i = 1; i <= (n - accumulator) / 2; i++) {
+            for (int i = 1; i <= n / 2; i++) {
                 min = Math.min(min, sum(n, numOfSquares + 1, accumulator + new Double(Math.pow(i, 2)).intValue()));
             }
             return min;
