@@ -12,8 +12,11 @@ public class Playground {
         head.next.next.next = new ListNode(0);
 
 
-        SortLinkedList sortLinkedList = new SortLinkedList();
-        ListNode sorted = sortLinkedList.sort(head);
+//        SortLinkedList sortLinkedList = new SortLinkedList();
+//        ListNode sorted = sortLinkedList.sort(head);
+
+        Recap recap = new Recap();
+        ListNode sorted = recap.sortList(head);
 
         while (sorted != null) {
             System.out.println(sorted.val);
