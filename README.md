@@ -72,3 +72,8 @@ start advancing both of them in parallel
 
 ## Dynamic Programming
 - https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
+- Coin change
+- Perfect squares
+- Maximum increasing subsequence
+- Decode ways
+

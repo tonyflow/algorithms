@@ -9,7 +9,7 @@ public class CoinChange {
         Arrays.fill(dp, amount + 1);
         Arrays.sort(coins);
         dp[0] = 0;
-        for (int i = 1; i <=amount; i++) {
+        for (int i = 1; i <= amount; i++) {
             for (int j = 0; j < coins.length; j++) {
                 if (coins[j] <= i) {
                     dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
@@ -28,7 +28,6 @@ public class CoinChange {
      * of coins - it has a backtracking vibe to it.
      * It does solve the problem succesfully but due to the lack of memoization it does
      * TLE for leeetcode standards.
-     *
      */
     int coinChange(int[] coins, int amount) {
 
