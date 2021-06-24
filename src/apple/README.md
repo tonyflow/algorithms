@@ -1,4 +1,5 @@
 ### Analysis of the problem
+#### Simulation
 The end condition of the shuffling algorithm is when the deck at hand is of the same order as the original deck's order.
 In order to check this condition we will always keep the original state in an order-of-insertion preserving data structure - a queue. `Shuffler`'s
 `original` member variable will be used for that state.
@@ -18,3 +19,6 @@ At the end of every iteration - when we have no more cards at hand - the table s
 When this happens, the top card of the table should be the first to be removed. Nevertheless, since adding elements to the bottom
 of the stack (Take the next card off the top and put it on the bottom of the deck in your hand) defies the purpose of using a stack, 
 we will convert the table stack back to a deck queue.
+
+#### Order of permutations
+Apart from the brute force simulation of the shuffling algorithm, we can derive the number rof shuffling rounds required 

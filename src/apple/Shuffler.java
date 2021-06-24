@@ -1,7 +1,12 @@
 package apple;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
+/**
+ * Main shuffling orchestrator. The Shuffler computes the total number of shuffling rounds the given deck of cards
+ * has to undergo in order for it to reach the initial ordering.
+ */
 public class Shuffler {
 
     /**
@@ -22,16 +27,10 @@ public class Shuffler {
     private Stack<Integer> table;
 
     /**
-     * Counter used to identify the number of rounds needed so that the table deck to
-     * be equal - in order - with the original deck of cards
-     */
-    private int rounds = 0;
-
-    /**
      * Create the original deck of cards
      *
      * @param numberOfCards Number of unique cards included in the deck
-     * @param inOrder       set to true if you want an initial ordered state of the elements in the deck
+     * @param inOrder       Set to true if you want an initial ordered state of the elements in the deck
      */
     public Shuffler(int numberOfCards, boolean inOrder) {
         List<Integer> tmp = new LinkedList<>();
@@ -42,50 +41,160 @@ public class Shuffler {
         this.original = new LinkedList<>(tmp);
         this.deck = new LinkedList<>(this.original);
         this.table = new Stack<>();
-        this.rounds = 0;
     }
 
-    public void shuffle() {
-        do {
-            while (!deck.isEmpty()) {
-                // Take the top card off the deck and set it on the table
-                table.add(deck.poll());
+    /**
+     * This method evaluates the number of rounds without having to compute all the shuffling rounds' state. Since
+     * the shuffling algorithm is deterministic, there is a distinct number of permutations it can produce. The solution
+     * is based on the order of permutations and it's actually an implementation of the Wikipedia entry.
+     * (https://en.wikipedia.org/wiki/Permutation#Permutation_order)
+     * <p>
+     * The time complexity of this solution is linear O(n)
+     *
+     * @return The order coincides with the number of shuffling rounds the deck needs to undergo so that we can reach
+     * the initial order. Or in this case, the initial permutation.
+     */
+    public int order() {
 
-                // Take the next card off the top and put it on the bottom of the deck in your hand.
-                if (!deck.isEmpty()) {
-                    deck.add(deck.poll());
-                } else {
-                    break;
+        // Run the spiral shuffle once
+        doShuffle();
+
+        // Recreate deck-at-hand state from table
+        while (!this.table.isEmpty()) {
+            this.deck.add(this.table.pop());
+        }
+
+        // Find cycles and lengths
+        // Create mapping from old to new state
+        HashMap<Integer, Integer> originalToPermutation = new HashMap<>();
+        while (!this.original.isEmpty() && !this.deck.isEmpty()) {
+            originalToPermutation.put(this.original.poll(), this.deck.poll());
+        }
+
+        // Identify cycles: If between the old and new state we have mappings like 1 -> 2, 2 -> 4, 4 -> 1, 3 -> 3
+        // Then we have the following sets representing cycles (1,2,4) and (3)
+        Set<Set<Integer>> cycles = new HashSet<>();
+        Set<Integer> processed = new HashSet<>();
+
+        for (Map.Entry<Integer, Integer> originalToPermutationState : originalToPermutation.entrySet()) {
+            Integer originalState = originalToPermutationState.getKey();
+            Integer permutationState = originalToPermutationState.getValue();
+            Set<Integer> cycle = new HashSet<>();
+            if (!processed.contains(originalState)) {
+                processed.add(originalState);
+                while (!cycle.contains(permutationState)) {
+                    cycle.add(originalState);
+                    cycle.add(permutationState);
+                    originalState = permutationState;
+                    permutationState = originalToPermutation.get(permutationState);
                 }
-//                System.out.println("Deck after iteration " + deck);
-//                System.out.println("Table after iteration " + table);
             }
-            this.rounds++;
+            cycles.add(cycle);
+        }
+
+        // Map cycles to cycle lengths
+        Set<Integer> cycleLengths = cycles.stream().map(cycle -> cycle.size()).collect(Collectors.toSet());
+
+        // Find least common multiplier of the cycle's lengths
+        int leastCommonMultiplier = 1;
+        for (Integer cycleLength : cycleLengths) {
+            leastCommonMultiplier = lcm(leastCommonMultiplier, cycleLength);
+        }
+
+        // Before returning reset state for future iterations of the shuffler
+        reset();
+
+        return leastCommonMultiplier;
+    }
+
+    /**
+     * The simulate method will run the shuffle as many times as it's required for the deck to reach
+     * its original order.
+     *
+     * @return The number of rounds for the deck to return to its original order
+     */
+    public int simulate() {
+        int rounds = 0;
+        do {
+            doShuffle();
+            rounds++;
 
             // Re - initialize state
             // Move all cards from the table to the deck at hand
-            while (!this.table.isEmpty()){
+            while (!this.table.isEmpty()) {
                 this.deck.add(this.table.pop());
             }
-            System.out.println("Reloaded deck from table state after " + rounds + " round: " + deck);
 
             // Clear the table off of cards
             this.table.clear();
         } while (!areEqual(this.deck, this.original));
+
+        // Reset the shuffler's state
+        reset();
+
+        return rounds;
     }
+
+    /**
+     * Reset shuffler's state to the one upon its creation by the constructor
+     */
+    private void reset() {
+        this.deck = new LinkedList<>(this.original);
+        this.table = new Stack<>();
+    }
+
+    /**
+     * Find the least common multiplier
+     *
+     * @param a First given number
+     * @param b Second given number
+     * @return Least common multiplier
+     */
+    private int lcm(int a, int b) {
+        if (a == 0 || b == 0) {
+            return 0;
+        }
+        int absA = Math.abs(a);
+        int absB = Math.abs(b);
+        int absHigherNumber = Math.max(absA, absB);
+        int absLowerNumber = Math.min(absA, absB);
+        int lcm = absHigherNumber;
+        while (lcm % absLowerNumber != 0) {
+            lcm += absHigherNumber;
+        }
+        return lcm;
+    }
+
+    /**
+     * Run one shuffling round. The round ends when we're left with no cards at hand.
+     */
+    private void doShuffle() {
+        while (!deck.isEmpty()) {
+            // Take the top card off the deck and set it on the table
+            table.add(deck.poll());
+
+            // Take the next card off the top and put it on the bottom of the deck in your hand.
+            if (!deck.isEmpty()) {
+                deck.add(deck.poll());
+            } else {
+                break;
+            }
+        }
+    }
+
 
     private boolean areEqual(Queue<Integer> table, Queue<Integer> original) {
-        return table.equals(original);
+//        return table.equals(original);
+        int thc = table.hashCode();
+        int ohc = original.hashCode();
+//        System.out.println("Table hash code " + thc);
+//        System.out.println("Original hash code " + ohc);
+        return thc == ohc;
     }
-
 
     /**
      * Accessors
      */
-    public int getRounds() {
-        return this.rounds;
-    }
-
     public Queue<Integer> getOriginal() {
         return this.original;
     }
