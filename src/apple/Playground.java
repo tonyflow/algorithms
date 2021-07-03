@@ -12,14 +12,14 @@ public class Playground {
         a.add(3);
 
         Queue<Integer> b = new LinkedList<>();
-        a.add(1);
-        a.add(3);
-        a.add(2);
+        b.add(1);
+        b.add(3);
+        b.add(2);
 
         Queue<Integer> c = new LinkedList<>();
-        a.add(1);
-        a.add(2);
-        a.add(3);
+        c.add(1);
+        c.add(2);
+        c.add(3);
 
         Queue<Integer> d = new LinkedList<>(a);
 

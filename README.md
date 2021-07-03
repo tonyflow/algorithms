@@ -14,7 +14,7 @@
   - Transpose and Reflect!
 - Convert 2D matrix in 1D array
   - There is a formula for converting 2D matrices into 1D arrays and vice versa
-    -- n * m matrix convert to an array => `matrix[x][y] => a[x * m + y]`
+    -- n * m matrix convert to an array => `matrix[x][y] => a[x * m + y]`, m = #columns
     -- an array convert to n * m matrix => `a[x] =>matrix[x / m][x % m];`
 - Power set algorithm (subsets in leetcode)
 - GCD on strings
@@ -76,4 +76,11 @@ start advancing both of them in parallel
 - Perfect squares
 - Maximum increasing subsequence
 - Decode ways
+- Maximal square
+- Minimum path sum
+- Daily temperatures
+- Target sum
+- Best time to buy and sell stocks with cooldown
+- Partition equals  subset sum
+
 

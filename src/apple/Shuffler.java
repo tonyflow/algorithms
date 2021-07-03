@@ -57,7 +57,7 @@ public class Shuffler {
     public int order() {
 
         // Run the spiral shuffle once
-        doShuffle();
+        shuffle();
 
         // Recreate deck-at-hand state from table
         while (!this.table.isEmpty()) {
@@ -73,6 +73,7 @@ public class Shuffler {
 
         // Identify cycles: If between the old and new state we have mappings like 1 -> 2, 2 -> 4, 4 -> 1, 3 -> 3
         // Then we have the following sets representing cycles (1,2,4) and (3)
+        // This is the cyclic notation of a permutation
         Set<Set<Integer>> cycles = new HashSet<>();
         Set<Integer> processed = new HashSet<>();
 
@@ -116,7 +117,7 @@ public class Shuffler {
     public int simulate() {
         int rounds = 0;
         do {
-            doShuffle();
+            shuffle();
             rounds++;
 
             // Re - initialize state
@@ -168,7 +169,7 @@ public class Shuffler {
     /**
      * Run one shuffling round. The round ends when we're left with no cards at hand.
      */
-    private void doShuffle() {
+    private void shuffle() {
         while (!deck.isEmpty()) {
             // Take the top card off the deck and set it on the table
             table.add(deck.poll());
@@ -183,13 +184,14 @@ public class Shuffler {
     }
 
 
+    /**
+     * Based on the LinkedList docs:
+     * "Returns true if and only if the specified object is also a list, both lists have the same size, and all corresponding pairs of elements in the two lists are equal.
+     * (Two elements e1 and e2 are equal if (e1==null ? e2==null : e1.equals(e2)).)
+     * In other words, two lists are defined to be equal if they contain the same elements in the same order."
+     */
     private boolean areEqual(Queue<Integer> table, Queue<Integer> original) {
-//        return table.equals(original);
-        int thc = table.hashCode();
-        int ohc = original.hashCode();
-//        System.out.println("Table hash code " + thc);
-//        System.out.println("Original hash code " + ohc);
-        return thc == ohc;
+        return table.equals(original);
     }
 
     /**
