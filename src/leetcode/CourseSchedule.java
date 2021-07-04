@@ -22,36 +22,58 @@ public class CourseSchedule {
             }
         }
 
-        boolean[] visited = new boolean[numCourses];
-        HashSet<Integer> black = new HashSet<>();
+        Set<Integer> processed = new HashSet<>();
+        Set<Integer> processing = new HashSet<>();
 
         for (int i = 0; i < numCourses; i++) {
-            if (isCyclic(i, adjacency,black, visited)) return false;
+            if (isCyclic(adjacency, i, processed, processing)) return false;
 //            if (!bfs(i, adjacency, visited)) return false;
         }
         return true;
     }
 
-    private static boolean isCyclic(Integer course,
-                                    Map<Integer, Set<Integer>> adjacency,
-                                    HashSet<Integer> black,
-                                    boolean[] visited) {
+    private static boolean isCyclic(Map<Integer, Set<Integer>> graph,
+                                    int course,
+                                    Set<Integer> processed,
+                                    Set<Integer> processing) {
 
-        if (visited[course]) return true;
+        if (processing.contains(course)) return true;
 
-        visited[course] = true;
-        Set<Integer> requirements = adjacency.get(course);
-        if (requirements != null && !requirements.isEmpty()) {
-            for (Integer requirement : requirements) {
-                if (!black.contains(requirement) && isCyclic(requirement, adjacency, black, visited)) return true;
+        processing.add(course);
+        Set<Integer> prerequisites = graph.get(course);
+        if (prerequisites != null && !prerequisites.isEmpty()) {
+            for (Integer adjacent : prerequisites) {
+                if (!processed.contains(adjacent)) {
+                    if (isCyclic(graph, adjacent, processed, processing)) return true;
+                }
             }
         }
 
-        black.add(course);
-        visited[course] = false;
-
+        processing.remove(course);
+        processed.add(course);
         return false;
     }
+
+//    private static boolean isCyclic2(Integer course,
+//                                     Map<Integer, Set<Integer>> adjacency,
+//                                     HashSet<Integer> black,
+//                                     boolean[] visited) {
+//
+//        if (visited[course]) return true;
+//
+//        visited[course] = true;
+//        Set<Integer> requirements = adjacency.get(course);
+//        if (requirements != null && !requirements.isEmpty()) {
+//            for (Integer requirement : requirements) {
+//                if (!black.contains(requirement) && isCyclic(requirement, adjacency, black, visited)) return true;
+//            }
+//        }
+//
+//        black.add(course);
+//        visited[course] = false;
+//
+//        return false;
+//    }
 
     private static boolean bfs(Integer course,
                                Map<Integer, Set<Integer>> adjacency,
