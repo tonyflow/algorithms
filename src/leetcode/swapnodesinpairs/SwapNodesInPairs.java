@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.swapnodesinpairs;
 
 import lists.ListNode;
 

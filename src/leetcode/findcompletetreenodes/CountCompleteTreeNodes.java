@@ -2,7 +2,7 @@ package leetcode.findcompletetreenodes;
 
 import trees.TreeNode;
 
-public class FindCompleteTreeNodes {
+public class CountCompleteTreeNodes {
 
     /**
      * Do not traverse the tree!

@@ -15,7 +15,7 @@ public class NumberOfStudentsUnableToEatLunch {
 
         for (int sandwich : sandwiches) {
             if (numberOfStudentsThatPreferEitherOneOrZero[sandwich] == 0) {
-                return numberOfStudentsThatPreferEitherOneOrZero[Math.abs(sandwich - 1)];
+                return numberOfStudentsThatPreferEitherOneOrZero[1 - sandwich];
             }
             numberOfStudentsThatPreferEitherOneOrZero[sandwich]--;
         }

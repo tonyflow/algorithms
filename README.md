@@ -70,6 +70,20 @@ start advancing both of them in parallel
 - Wiggle sort
 - Counting sort
 
+## Graphs
+- Traversals
+  - BFS/DFS
+- Find paths from s to e 
+    - using the `edgeTo[x]` table from Sedgewick and Wayne
+- Connected components
+  - Count connected components
+  - Identify if there is a path between two nodes of a graph through comparing their connected component ids
+- Bipartite graph / The two colors theorem
+- Eulerian paths and circuits (Find the itinerary leetcode)
+- Identify cycles in a graph
+- Is a graph strongly connected
+- Topological sort
+
 ## Dynamic Programming
 - https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
 - Coin change
