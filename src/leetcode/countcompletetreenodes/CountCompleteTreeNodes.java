@@ -1,4 +1,4 @@
-package leetcode.findcompletetreenodes;
+package leetcode.countcompletetreenodes;
 
 import trees.TreeNode;
 

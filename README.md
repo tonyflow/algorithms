@@ -69,6 +69,8 @@ start advancing both of them in parallel
 - Construct BT from inorder and preorder traversal
 - Wiggle sort
 - Counting sort
+- Largest number: A simple comparator might be there to save the day!
+- Centroids algorithm - MinimumHeightTrees
 
 ## Graphs
 - Traversals

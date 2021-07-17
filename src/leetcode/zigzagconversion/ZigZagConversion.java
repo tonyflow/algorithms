@@ -1,11 +1,11 @@
-package leetcode;
+package leetcode.zigzagconversion;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZigZagString {
+public class ZigZagConversion {
 
-    static String compute(String s, int numRows) {
+    static String convert(String s, int numRows) {
 
         List<StringBuilder> rows = new ArrayList<>();
         for (int i = 0; i < numRows; i++) {
@@ -35,7 +35,7 @@ public class ZigZagString {
     }
 
     public static void main(String[] args) {
-        String zig = ZigZagString.compute("PAYPALISHIRING", 3);
+        String zig = ZigZagConversion.convert("PAYPALISHIRING", 3);
         System.out.println(zig);
     }
 }
