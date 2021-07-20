@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.removekdigits;
 
 import java.util.Stack;
 

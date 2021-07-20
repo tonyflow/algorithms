@@ -71,6 +71,7 @@ start advancing both of them in parallel
 - Counting sort
 - Largest number: A simple comparator might be there to save the day!
 - Centroids algorithm - MinimumHeightTrees
+- Remove k digits !!!
 
 ## Graphs
 - Traversals
@@ -97,6 +98,16 @@ start advancing both of them in parallel
 - Daily temperatures
 - Target sum
 - Best time to buy and sell stocks with cooldown
-- Partition equals  subset sum
+- Partition equals subset sum
+- Partition palindromes
+- Longest palindromic subsequence
+- Different ways to add parentheses
+
+## Recap
+- Monotonic stack
+- Dynamic programming
+- As many array problems/techniques as possible
+- The hardest problems section
+
 
 

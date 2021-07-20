@@ -4,6 +4,50 @@ import lists.ListNode;
 
 public class ReverseLinkedListII {
 
+    static public ListNode simpler(ListNode head, int left, int right) {
+
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        // Find end of first half
+        ListNode endOfFirstHalf = head;
+        for (int i = 1; i < left - 1; i++) {
+            endOfFirstHalf = endOfFirstHalf.next;
+        }
+
+        // Find start of second half
+        ListNode startOfSecondHalf = head;
+        for (int i = 1; i <= right; i++) {
+            startOfSecondHalf = startOfSecondHalf.next;
+        }
+
+        // Reverse between
+        ListNode next;
+        ListNode current = endOfFirstHalf.next;
+        ListNode previous = endOfFirstHalf;
+        ListNode endOfReversed = endOfFirstHalf.next;
+
+        while (current != startOfSecondHalf) {
+
+            // Save next
+            next = current.next;
+
+            // Reverse
+            current.next = previous;
+
+            // Update pointers
+            previous = current;
+            current = next;
+        }
+        // previous is the start of the reversed part of the list
+        endOfFirstHalf.next = previous;
+
+        //
+        endOfReversed.next = startOfSecondHalf;
+
+        return dummy.next;
+    }
+
     static public ListNode reverseBetween(ListNode head, int left, int right) {
 
         // Between the endOfFirstHalf and the startOfSecondHalf lies the reversed part of the list
@@ -70,7 +114,7 @@ public class ReverseLinkedListII {
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
 
-        reverseBetween(head, 2, 4);
+        simpler(head, 2, 4);
 
     }
 }
