@@ -1,5 +1,7 @@
 package leetcode.combinationsum;
 
+import sun.awt.X11.XStateProtocol;
+
 import java.util.*;
 
 /**
@@ -11,9 +13,28 @@ public class CombinationSum {
 
         Set<List<Integer>> result = new HashSet<>();
         Arrays.sort(candidates);
-        doFind(candidates, new Stack<>(), result, 0, target, 0);
+        doFind2(candidates, new Stack<>(), result, target, 0);
 
         return new ArrayList<>(result);
+    }
+
+    private void doFind2(int[] candidates,
+                         Stack<Integer> partialCandidates,
+                         Set<List<Integer>> result,
+                         int remainder,
+                         int position) {
+
+        if (remainder < 0) return;
+        else if (remainder == 0) {
+            result.add(new ArrayList<>(partialCandidates));
+        } else {
+            for (int i = position; i < candidates.length; i++) {
+                partialCandidates.push(candidates[i]);
+                doFind2(candidates, partialCandidates, result, remainder - candidates[i], i);
+                partialCandidates.pop();
+            }
+        }
+
     }
 
     private void doFind(int[] candidates,

@@ -6,6 +6,7 @@
 5. Longest common subsequence
 
 # Ideas
+- Prefix sum
 - Quickselect Hoare's selection algorithm
 - Union find
 - Next permutation algorithm
@@ -110,4 +111,26 @@ start advancing both of them in parallel
 - The hardest problems section
 
 
+## Useful formulas
+1. Permutations
+  1. With repetition
+  2. without repetition
 
+2. Combinations
+  1. with repetition
+  2. without repetition
+
+
+3. Arithmetic progression
+  1. sum `n(a(1) + a(n))/2`
+  2. nth term = `a(n) = a(1) + (n-1)d` where d is the difference between the terms of
+  the progression and `a(1)` is the first term.
+  3. nth term based on m term = `a(n) = a(m) + (n-m)d`
+
+4. Geometric progression
+    1. a(n)=a^r^(n-1)
+    2. `(a(1-r^n))/(1-r)`, where a is the first term, n is the number of terms and r is the multiplication factor
+
+4. Travelling salesman => n! time
+5.
+  
