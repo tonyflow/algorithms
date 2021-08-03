@@ -54,27 +54,6 @@ public class CourseSchedule {
         return false;
     }
 
-//    private static boolean isCyclic2(Integer course,
-//                                     Map<Integer, Set<Integer>> adjacency,
-//                                     HashSet<Integer> black,
-//                                     boolean[] visited) {
-//
-//        if (visited[course]) return true;
-//
-//        visited[course] = true;
-//        Set<Integer> requirements = adjacency.get(course);
-//        if (requirements != null && !requirements.isEmpty()) {
-//            for (Integer requirement : requirements) {
-//                if (!black.contains(requirement) && isCyclic(requirement, adjacency, black, visited)) return true;
-//            }
-//        }
-//
-//        black.add(course);
-//        visited[course] = false;
-//
-//        return false;
-//    }
-
     private static boolean bfs(Integer course,
                                Map<Integer, Set<Integer>> adjacency,
                                boolean[] visited) {

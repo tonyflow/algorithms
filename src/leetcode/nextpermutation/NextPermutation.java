@@ -60,8 +60,8 @@ public class NextPermutation {
             while (j >= 0 && nums[j] <= nums[i]) {
                 j--;
             }
-            swap(nums, i, j);//        System.out.println(Arrays.toString(nextPermutation(new int[]{2, 3, 1, 3, 3})));
-//        System.out.println(Arrays.toString(leetCodeSolution(new int[]{2, 3, 1, 3, 3})));
+            swap(nums, i, j);
+
         }
         reverse(nums, i + 1);
 

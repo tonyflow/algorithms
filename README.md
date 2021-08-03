@@ -73,7 +73,10 @@ start advancing both of them in parallel
 - Largest number: A simple comparator might be there to save the day!
 - Centroids algorithm - MinimumHeightTrees
 - Remove k digits !!!
-
+- House robber done the right way. Unfortunately you have to use tabulation to get rid of the extra stack space.
+- Tails algorithm for longest increasing subsequence - patience sorting
+  - https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf
+  - https://en.wikipedia.org/wiki/Patience_sorting
 ## Graphs
 - Traversals
   - BFS/DFS
@@ -83,10 +86,11 @@ start advancing both of them in parallel
   - Count connected components
   - Identify if there is a path between two nodes of a graph through comparing their connected component ids
 - Bipartite graph / The two colors theorem
-- Eulerian paths and circuits (Find the itinerary leetcode)
+- Eulerian paths and circuits (Reconstruct the itinerary leetcode): A trail/path that visits all the vertices of the graph exactly once.
 - Identify cycles in a graph
 - Is a graph strongly connected
 - Topological sort
+- 
 
 ## Dynamic Programming
 - https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
@@ -113,12 +117,12 @@ start advancing both of them in parallel
 
 ## Useful formulas
 1. Permutations
-  1. With repetition
-  2. without repetition
+  1. With repetition: a lock where digits can be repeated
+  2. without repetition: first three people in a race of 10. One cannot be first AND second
 
 2. Combinations
-  1. with repetition
-  2. without repetition
+  1. with repetition: coins in my pocket
+  2. without repetition: lottery numbers
 
 
 3. Arithmetic progression

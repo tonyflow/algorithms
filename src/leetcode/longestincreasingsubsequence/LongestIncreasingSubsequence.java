@@ -1,9 +1,19 @@
-package leetcode;
+package leetcode.longestincreasingsubsequence;
 
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 public class LongestIncreasingSubsequence {
+
+    int patienceSorting(int[] nums) {
+        List<Integer> piles = new ArrayList<>();
+        for (int num : nums) {
+            int pile = Collections.binarySearch(piles, num);
+            if (pile < 0) pile = -pile - 1;
+            if (pile == piles.size()) piles.add(num);
+            else piles.set(pile, num);
+        }
+        return piles.size();
+    }
 
     static int logarithmic(int[] nums) {
         int[] tails = new int[nums.length];
