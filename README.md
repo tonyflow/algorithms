@@ -84,6 +84,9 @@
     - Ignore negatives
     - Ignore numbers greater than the length of the array
     - swap elements until i=A[i-1]
+- Sliding window maximum technique
+- You should check the ideas behind ALL hard problems you've solved or tried to solve.
+- Skyline problem (!!!!!!!!!!!!!!!!)
 
 ## Graphs
 
