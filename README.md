@@ -6,6 +6,11 @@
 4. Longest increasing subsequence
 5. Longest common subsequence
 
+# Hard problems solved
+1. Best time to buy and sell stock IV
+2. Best time to buy and sell stock III
+3. 
+
 # Ideas
 
 - Prefix sum
@@ -87,6 +92,7 @@
 - Sliding window maximum technique
 - You should check the ideas behind ALL hard problems you've solved or tried to solve.
 - Skyline problem (!!!!!!!!!!!!!!!!)
+- Split Array Largest Sum.... Greedy with BS.... mind - fucking - blowing
 
 ## Graphs
 
