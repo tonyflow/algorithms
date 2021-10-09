@@ -32,8 +32,8 @@ public class PalindromePairs {
                     result.add(Arrays.asList(i, wordsToIndex.get(candidate)));
             }
 
-            // append to the start in a forwards order
-            // For word lls we will try l + lls,ll+ lls,sll+lls
+            // append to the start in a backwards order
+            // For word sssll we will try {l-sssll,ll-sssll,lls-sssll,llss-sssll,llsss-sssll}
             // candidate = {l,ll,sll}
             builder = new StringBuilder();
             for (int j = r.length-1; j >= 0; j--) {

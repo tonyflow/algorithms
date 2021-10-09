@@ -88,28 +88,6 @@ public class LongestIncreasingSubsequence {
         return Arrays.stream(dp).max().getAsInt();
     }
 
-    /**
-     * Using monotonic stack - not working
-     */
-    static int deadEndStack(int[] nums) {
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            Stack<Integer> stack = new Stack<>();
-            stack.push(nums[i]);
-            int currentMax = 1;
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] > stack.peek()) {
-//                    while (!stack.isEmpty() && stack.peek() > nums[j]) stack.pop();
-                    stack.push(nums[j]);
-                    currentMax = Math.max(currentMax, stack.size());
-                }
-            }
-            max = Math.max(max, currentMax);
-        }
-
-        return max;
-    }
-
     public static void main(String[] args) {
 //        System.out.println(lengthOfLIS(new int[]{10, 9, 2, 5, 3, 7, 101, 18}));
 //        System.out.println(lengthOfLIS(new int[]{0, 1, 0, 3, 2, 3}));

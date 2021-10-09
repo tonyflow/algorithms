@@ -1,5 +1,7 @@
 package leetcode.hard;
 
+import java.util.Arrays;
+
 public class DistinctSubsequences {
 
     public int numDistinct(String s, String t) {
@@ -34,13 +36,16 @@ public class DistinctSubsequences {
 
     public int bruteForce(String s, String t) {
 //        return traverse1(s, 0, new StringBuilder(), t);
-        return traverse2(s, 0, t, 0);
+        int[][] memo = new int[s.length()][t.length()];
+        for(int[] m:memo) Arrays.fill(m,-1);
+        return traverse2(s, 0, t, 0, memo);
     }
 
     private int traverse2(String s,
                           int is,
                           String t,
-                          int it) {
+                          int it,
+                          int[][] memo) {
         if (is == s.length() && it == t.length()) {
             return 1;
         }
@@ -49,11 +54,15 @@ public class DistinctSubsequences {
 
         if (is == s.length()) return 0;
 
-        if (s.charAt(is) == t.charAt(it)) {
-            return traverse2(s, is + 1, t, it + 1) + traverse2(s, is + 1, t, it);
-        } else {
-            return traverse2(s, is + 1, t, it);
+        if (memo[is][it] == -1) {
+            if (s.charAt(is) == t.charAt(it)) {
+                memo[is][it] = traverse2(s, is + 1, t, it + 1, memo) + traverse2(s, is + 1, t, it, memo);
+            } else {
+                memo[is][it] = traverse2(s, is + 1, t, it, memo);
+            }
         }
+
+        return memo[is][it];
     }
 
     private int traverse1(String s,

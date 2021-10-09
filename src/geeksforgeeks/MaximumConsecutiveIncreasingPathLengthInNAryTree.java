@@ -1,4 +1,4 @@
-package geeksforgeeks.trees;
+package geeksforgeeks;
 
 import java.util.Map;
 

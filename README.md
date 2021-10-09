@@ -77,6 +77,7 @@
 - Construct BT from inorder and preorder traversal
 - Wiggle sort
 - Counting sort
+- Cycle sort?
 - Largest number: A simple comparator might be there to save the day!
 - Centroids algorithm - MinimumHeightTrees
 - Remove k digits !!!
@@ -93,6 +94,62 @@
 - You should check the ideas behind ALL hard problems you've solved or tried to solve.
 - Skyline problem (!!!!!!!!!!!!!!!!)
 - Split Array Largest Sum.... Greedy with BS.... mind - fucking - blowing
+
+## Arrays
+This is a list of ideas coming from array problems
+- [Find minimum length of unsorted subarray which makes entire array storted if it gets sorted](https://www.geeksforgeeks.org/minimum-length-unsorted-subarray-sorting-which-makes-the-complete-array-sorted/)
+  - Find first pair from start that should be swapped
+  - Find first pair from end that should be swapped
+  - Find min and max between start and end
+  - Find first element between (0,start-1) which is greater than min. This is the new start
+  - Find first element between (end+1,n-1) which is smaller than max. This is the new end
+- Two sum
+  - Create a map of diffs
+  - Iterate over the array
+  - If the map contains the element then for `r[i], r[i]=target-otherelement => target = otherelement+r[i]`
+- 3 sum
+  - Sort the array
+  - for each index i
+    - define `start = i+1`
+    - define `end = n-1`
+    - evaluate `sum=r[i]+r[start]+r[end]`
+    - if `sum=r[i]+r[start]+r[end] == 0` add to result
+    - if `sum=r[i]+r[start]+r[end] > 0` we have to make the result smaller so `end--`
+    - if `sum=r[i]+r[start]+r[end] < 0` we have to make the result smaller so `start++`
+- 4 sum
+  - the same process as 3 sum with the only difference that we have two nested for loops in the beginning
+- Minimum size subarray
+  1. left = 0
+  2. right = 0
+  3. total = 0
+  4. start adding elements from right till total >= target
+  5. once total >= 0 start removing elements till total < target
+  6. Do 4 and 5 till you're out of elements love
+- Find K Pairs with Smallest Sums
+  - Define a class Pair(a,b) 
+  - Create a priority queue with a comparator based on the sum of the members of the pair
+  - Now we have to take into account that the arrays are SORTED!
+  - Based on the fact that arrays as sorted we can create all pairs using the first elements from the first array and all elements from the second array
+  - This will guarantee that we will be creating the k smaller sums
+  - we put all these in the priority queue
+  - then we start polling
+  - as we are polling we start incrementing the index of the first array and pushing these elements in the queue. Of course,
+  only if the index of the first array is smaller than the length of the array. 
+  - we stop if we reach k elements in the result
+- Container with most water
+  - two pointers
+  - start = 0, end = n
+  - since we are looking for the container with the most water, we want to move the pointer that points to the lowest bar so we 
+  increment/decrement the pointer that points to the lowest bar by simultaneously updating the max area
+- Merge intervals
+  - add to the result all intervals ending before the new interval starts
+  - now we will process all intervals intersecting with the current interval
+    - the new start is the min of starts of the current newInterval and the interval under process
+    - the new end is the max of ends of the current newInterval and the interval under process
+    - we do that until there are no intersecting intervals anymore
+  - Add the rest of the intervals into the result
+    
+- 
 
 ## Graphs
 
