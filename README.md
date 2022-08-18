@@ -6,11 +6,6 @@
 4. Longest increasing subsequence
 5. Longest common subsequence
 
-# Hard problems solved
-1. Best time to buy and sell stock IV
-2. Best time to buy and sell stock III
-3. 
-
 # Ideas
 
 - Prefix sum
@@ -186,7 +181,6 @@ This is a list of ideas coming from array problems
 - Different ways to add parentheses
 
 ## Recap
-
 - Monotonic stack
 - Dynamic programming
 - As many array problems/techniques as possible

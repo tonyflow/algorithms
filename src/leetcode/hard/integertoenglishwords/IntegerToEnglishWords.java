@@ -2,6 +2,14 @@ package leetcode.hard.integertoenglishwords;
 
 public class IntegerToEnglishWords {
 
+
+
+
+    /**
+     * The following solution took the best of me
+     * And it's ugly. I guess the best of me is not that beautiful
+     */
+
     String[] tens = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
             "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
 
@@ -11,11 +19,11 @@ public class IntegerToEnglishWords {
 
     public String numberToWords(int num) {
 
-        if(num==0) return tens[num];
+        if (num == 0) return tens[num];
 
         StringBuilder builder = new StringBuilder();
         traverse(num, 0, builder);
-        return builder.toString().replace("  "," ").trim();
+        return builder.toString().replaceAll(" +", " ").trim();
     }
 
     private void traverse(int num,
@@ -27,7 +35,7 @@ public class IntegerToEnglishWords {
         // Process last two digits
         int remainder = num % 100;
 
-        if(remainder!=0){
+        if (remainder != 0 || num % 1000 >= 100) {
             builder.insert(0, magnitudes[magnitude]);
             builder.insert(0, " ");
         }

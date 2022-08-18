@@ -2,6 +2,9 @@ package leetcode.hard;
 
 import java.util.*;
 
+/**
+ * Should be studied together with ShortestSubarrayWithSumAtLeastK
+ */
 public class SlidingWindowMaximum {
 
     class Pair {

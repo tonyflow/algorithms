@@ -17,12 +17,17 @@ public class MedianFinder {
     public void addNum(int num) {
         if (this.size % 2 == 0) {
             a.add(num);
+            System.out.println("a=" + a + " ,b=" + b);
             b.offer(a.poll());
+            System.out.println("a=" + a + " ,b=" + b);
         } else {
             b.add(num);
+            System.out.println("a=" + a + " ,b=" + b);
             a.offer(b.poll());
+            System.out.println("a=" + a + " ,b=" + b);
         }
         this.size++;
+        System.out.println("size is " + size);
 
     }
 

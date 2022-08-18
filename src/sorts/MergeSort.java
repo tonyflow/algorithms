@@ -1,6 +1,6 @@
 package sorts;
 
-public class MergeSort extends Sort {
+public class    MergeSort extends Sort {
 
     int[] aux;
 

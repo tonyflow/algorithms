@@ -22,7 +22,6 @@ public class DungeonGame {
                 int rightwards = princessWithoutLifePlusMemoization(dungeon, i, j + 1,memo);
                 int downwards = princessWithoutLifePlusMemoization(dungeon, i + 1, j,memo);
 
-
                 int minLifeSoFar = Math.min(rightwards, downwards) - dungeon[i][j];
                 memo[i][j] = minLifeSoFar <= 0 ? 1 : minLifeSoFar;
             }
