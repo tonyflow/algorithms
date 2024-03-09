@@ -2,6 +2,9 @@ package leetcode.firsttwononoverlappingsubarrayseachwithtargetsum;
 
 import java.util.*;
 
+/**
+ * https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/description/
+ */
 public class FirstTwoNonOverlappingSubArraysEachWithTargetSum {
 
 
@@ -20,7 +23,7 @@ public class FirstTwoNonOverlappingSubArraysEachWithTargetSum {
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
             if (prefix.containsKey(sum - target)) {
-                int lengthOfLeftSubArray = prefix.get(sum - target) - i;
+                int lengthOfLeftSubArray = i - prefix.get(sum - target);
                 minLengthOfLeftSubArray = Math.min(minLengthOfLeftSubArray, lengthOfLeftSubArray);
 
             }
@@ -34,7 +37,7 @@ public class FirstTwoNonOverlappingSubArraysEachWithTargetSum {
         return result == Integer.MAX_VALUE ? -1 : result;
     }
 
-    // it is not wasy to add memoization in this one and it TLEs
+    // it is not easy to add memoization in this one and it TLEs
     public int tle(int[] arr, int target) {
         if (arr.length < 2) return -1;
         int min = Integer.MAX_VALUE;

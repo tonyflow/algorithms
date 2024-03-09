@@ -26,7 +26,7 @@ public class BFS {
                 if (!visited[w]) {
                     edgeTo[w] = v;
                     visited[w] = true;
-                    todo.addAll(G.adjacencyList.get(w));
+                    todo.add(w);
                 }
             }
         }

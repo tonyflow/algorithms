@@ -22,12 +22,12 @@ public class Playground {
 //        mergeSort.sort(r);
 //        System.out.println(Arrays.toString(r));
 
-//        QuickSort quickSort = new QuickSort();
-//        quickSort.sort(r);
-//        System.out.println(Arrays.toString(r));
+        QuickSort quickSort = new QuickSort();
+        quickSort.sort(r);
+        System.out.println(Arrays.toString(r));
 
-        RadixSort radixSort = new RadixSort();
-        radixSort.sort(c);
+//        RadixSort radixSort = new RadixSort();
+//        radixSort.sort(c);
 //        G4GRadix g4GRadix = new G4GRadix();
 //        g4GRadix.sort(c);
         System.out.println(Arrays.toString(c));

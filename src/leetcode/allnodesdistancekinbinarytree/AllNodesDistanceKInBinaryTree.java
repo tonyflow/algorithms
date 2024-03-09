@@ -21,7 +21,7 @@ public class AllNodesDistanceKInBinaryTree {
         boolean[] visited = new boolean[501];
         dfs(graph, target, 0, k, visited, result);
 
-        return result.stream().collect(Collectors.toList());
+        return new ArrayList<>(result);
 
     }
 

@@ -1,7 +1,5 @@
 package leetcode.combinationsum;
 
-import sun.awt.X11.XStateProtocol;
-
 import java.util.*;
 
 /**

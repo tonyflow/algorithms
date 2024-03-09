@@ -8,7 +8,11 @@
 
 # Ideas
 
-- Prefix sum
+- Prefix sum 
+  - Shortest subarray with sum at least K
+  - Maximum points you can obtain from cards
+  - range sum query immutable
+  - first two non overlappoing sub array with target sum
 - Quickselect Hoare's selection algorithm
 - Union find
 - Next permutation algorithm
@@ -55,6 +59,7 @@
 - Find pivot element technique from quicksort
 - Minimum spanning trees
 - Topological sort
+   - Course scheduling
 - Longest common subsequence and maximum length of repeated subarray algorithm
 - Convert 2D matrix into 1D array
 - Traversing and accessing elements in rotated/circular array
@@ -161,7 +166,7 @@ This is a list of ideas coming from array problems
 - Identify cycles in a graph
 - Is a graph strongly connected
 - Topological sort
--
+   - Course scheduling
 
 ## Dynamic Programming
 
