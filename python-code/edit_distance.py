@@ -8,15 +8,6 @@ class Solution:
         self.result = float('inf')
 
     def minDistance(self, word1: str, word2: str) -> int:
-        return int(self._do_find(word1, word2))
-
-    def _do_find(self,
-                 word1: str,
-                 word2: str) -> float:
-
-        print(f'Checking against word {word1}')
-        if word1 == word2:
-            return 0
 
         if not word1:
             return len(word2)
@@ -24,25 +15,17 @@ class Solution:
         if not word2:
             return len(word1)
 
+        if word1[0] == word2[0]:
+            return self.minDistance(word1[1:], word2[1:])
+
         # Try insertions
-        min_insertions_cost: float = float('inf')
-        for i in range(len(word1)):
-            for letter_to_add in self.alphabet:
-                new_word: str = word1[:i] + letter_to_add + word1[i:]
-                min_insertions_cost = min(min_insertions_cost, 1 + self._do_find(new_word, word2))
+        min_insertions_cost: int = 1 + self.minDistance(word1, word2[1:])
 
         # Try deletion
-        min_deletions_cost: float = float('inf')
-        for i in range(len(word1)):
-            new_word: str = word1[:i] + word1[i + 1:]
-            min_deletions_cost = min(min_deletions_cost, 1 + self._do_find(new_word, word2))
+        min_deletions_cost: int = 1 + self.minDistance(word1[1:], word2)
 
         # Try substitutions
-        min_substitutions_cost: float = float('inf')
-        for i in range(len(word1)):
-            for letter_to_substitute_with in self.alphabet:
-                new_word: str = word1[:i] + letter_to_substitute_with + word1[i + 1:]
-                min_substitutions_cost = min(min_substitutions_cost, 1 + self._do_find(new_word, word2))
+        min_substitutions_cost: int = 1 + self.minDistance(word1[1:], word2[1:])
 
         return min(min_insertions_cost, min_deletions_cost, min_substitutions_cost)
 
