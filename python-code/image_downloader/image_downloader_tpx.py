@@ -1,19 +1,26 @@
-import os
-from pathlib import Path
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor, Future
+from pathlib import Path
+from threading import Thread, get_ident
+from typing import List, Optional
+
 import requests
-from threading import Thread
-from typing import Callable, List
 
 
-class ImageDownloader:
+class ImageDownloaderThreadPoolExecutor:
     """
     Dummy image downloader. This was a coding challenge in one the Scandit interviews
     """
-    def __init__(self, sources_dir: Path, target_dir: Path):
+
+    def __init__(self,
+                 sources_dir: Path,
+                 target_dir: Path,
+                 number_of_workers: int = 10):
         self.sources_dir: Path = sources_dir
         self.target_dir: Path = target_dir
-        self.worker_threads: List[Thread] = []
+        self.number_of_workers: int = number_of_workers
+        self.task_futures: Optional[List[Future]] = None
 
     def is_empty(self, path: Path) -> bool:
         return os.path.getsize(path.absolute()) == 0
@@ -25,7 +32,7 @@ class ImageDownloader:
     def create_single_downloader_task(self, json_file: Path):
         with open(json_file) as f:
             if not self.is_empty(json_file):
-                print(f'Processing JSON file {json_file}')
+                print(f'[thread_id: {get_ident()}] Processing JSON file {json_file}')
                 json_content = json.load(f)
                 for json_image_content in json_content:
                     img_url = json_image_content['url']
@@ -35,26 +42,26 @@ class ImageDownloader:
                     with open(fully_qualified_target_path, 'wb') as output_f:
                         output_f.write(response.content)
             else:
-                print(f'{json_file} is empty. Skipping processing')
+                print(f'[thread_id: {get_ident()}] {json_file} is empty. Skipping processing')
 
-    def create_all_downloader_tasks(self) -> List[Thread]:
-        for json_file in self.sources_dir.glob('**/*.json'):
-            yield Thread(target=self.create_single_downloader_task(json_file))
-
-    def start_download(self):
-        self.worker_threads = self.create_all_downloader_tasks()
-        for wt in self.worker_threads:
-            wt.start()
+    def initialize_all_downloader_tasks(self):
+        with ThreadPoolExecutor(max_workers=self.number_of_workers) as tpx:
+            self.task_futures = [tpx.submit(self.create_single_downloader_task, json_file=json_file) for json_file in
+                                 self.sources_dir.glob('**/*.json')]
 
     def wait_for_completion_and_stop(self):
-        for wt in self.worker_threads:
-            wt.join()
+        if not self.task_futures:
+            print('No tasks initialized. Maybe you have not invoked the create_all_downloader_tasks yet')
+            return
+
+        for future in self.task_futures:
+            future.result()
 
 
 if __name__ == '__main__':
     a_sources_dir = Path('./test_resources')
     a_target_dir = Path('./test_resources')
 
-    image_downloader: ImageDownloader = ImageDownloader(a_sources_dir, a_target_dir)
-    image_downloader.start_download()
+    image_downloader: ImageDownloaderThreadPoolExecutor = ImageDownloaderThreadPoolExecutor(a_sources_dir, a_target_dir)
+    image_downloader.initialize_all_downloader_tasks()
     image_downloader.wait_for_completion_and_stop()
