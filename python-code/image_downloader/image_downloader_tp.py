@@ -1,14 +1,13 @@
 import json
 import os
-from concurrent.futures import ThreadPoolExecutor, Future
+from multiprocessing.pool import ThreadPool
 from pathlib import Path
 from threading import get_ident
-from typing import List, Optional
 
 import requests
 
 
-class ImageDownloaderThreadPoolExecutor:
+class ImageDownloaderThreadPool:
     """
     Dummy image downloader. This was a coding challenge in one the Scandit interviews
     """
@@ -19,8 +18,7 @@ class ImageDownloaderThreadPoolExecutor:
                  number_of_workers: int = 10):
         self.sources_dir: Path = sources_dir
         self.target_dir: Path = target_dir
-        self.number_of_workers: int = number_of_workers
-        self.task_futures: Optional[List[Future]] = None
+        self.number_of_workers = number_of_workers
 
     def is_empty(self, path: Path) -> bool:
         return os.path.getsize(path.absolute()) == 0
@@ -44,24 +42,14 @@ class ImageDownloaderThreadPoolExecutor:
             else:
                 print(f'[thread_id: {get_ident()}] {json_file} is empty. Skipping processing')
 
-    def initialize_all_downloader_tasks(self):
-        with ThreadPoolExecutor(max_workers=self.number_of_workers) as tpx:
-            self.task_futures = [tpx.submit(self.create_single_downloader_task, json_file=json_file) for json_file in
-                                 self.sources_dir.glob('**/*.json')]
-
-    def wait_for_completion_and_stop(self):
-        if not self.task_futures:
-            print('No tasks initialized. Maybe you have not invoked the create_all_downloader_tasks yet')
-            return
-
-        for future in self.task_futures:
-            future.result()
+    def download(self):
+        with ThreadPool(self.number_of_workers) as pool:
+            pool.map(self.create_single_downloader_task, self.sources_dir.glob('**/*.json'))
 
 
 if __name__ == '__main__':
     a_sources_dir = Path('./test_resources')
     a_target_dir = Path('./test_resources')
 
-    image_downloader: ImageDownloaderThreadPoolExecutor = ImageDownloaderThreadPoolExecutor(a_sources_dir, a_target_dir)
-    image_downloader.initialize_all_downloader_tasks()
-    image_downloader.wait_for_completion_and_stop()
+    image_downloader: ImageDownloaderThreadPool = ImageDownloaderThreadPool(a_sources_dir, a_target_dir)
+    image_downloader.download()
