@@ -11,10 +11,10 @@ def simple_decorator(func):
 def decorator_with_args(foo: int):
     """
     Stackoverflow: https://stackoverflow.com/a/5929165/6566916
-    The decorator with arguments should return a function that will take a function and return another function
-    :param foo:
-    :return:
+    The decorator with arguments should return a function that will take
+    a function and return another function
     """
+
     def decorator(func):
         def wrapper(*args, **kwargs):
             print(f'Before method call for {foo}')
@@ -33,5 +33,11 @@ def hello():
     print('Hello')
 
 
+@simple_decorator
+def other():
+    print('Let us try this')
+
+
 if __name__ == '__main__':
     hello()
+    other()

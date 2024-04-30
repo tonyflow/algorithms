@@ -41,13 +41,16 @@ class Solution:
             # of adjacent flowers we have
             number_of_bouquets: int = 0
             number_of_adjacent_bloomed: int = 1
-            for i in range(len(bloomed_indices) - 1):
-                if bloomed_indices[i] + 1 == bloomed_indices[i]:
-                    number_of_adjacent_bloomed += 1
-                    if number_of_adjacent_bloomed == k:
-                        number_of_bouquets += 1
-                else:
-                    number_of_adjacent_bloomed = 1
+            if k == 1:
+                number_of_bouquets = len(bloomed_indices)
+            else:
+                for i in range(len(bloomed_indices) - 1):
+                    if bloomed_indices[i] + 1 == bloomed_indices[i]:
+                        number_of_adjacent_bloomed += 1
+                        if number_of_adjacent_bloomed == k:
+                            number_of_bouquets += 1
+                    else:
+                        number_of_adjacent_bloomed = 1
 
             return number_of_bouquets >= m
 
