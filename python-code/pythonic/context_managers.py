@@ -5,6 +5,7 @@ from tempfile import TemporaryFile
 from requests import Session
 from contextlib import contextmanager
 from unittest import TestCase
+from decimal import Decimal, getcontext, localcontext, ROUND_HALF_UP
 
 
 def file_context_manager():
@@ -51,7 +52,28 @@ def session_management_in_requests():
 
 
 def decimal_context():
-    pass
+    """
+    The term "Decimal Context" in Python pertains to the context settings within the decimal
+     module which govern aspects like precision, rounding, and arithmetic operation behavior
+     when using Decimal instances. This module is part of Python's standard library and is
+     designed to offer decimal floating-point arithmetic suitable for financial calculations
+     and other applications where exact decimal representation is required, avoiding the typical
+     problems of binary floating-point arithmetic
+    """
+    # Setting the global context
+    getcontext().prec = 4
+    getcontext().rounding = ROUND_HALF_UP
+    result = Decimal('1.234567') + Decimal('2.345678')
+    print(f'Decimal arithmetic using global context {result}')
+
+    with localcontext() as local_ctx:
+        local_ctx.prec = 2
+        local_ctx.rounding = ROUND_HALF_UP
+        local_result = Decimal('1.234567') + Decimal('2.345678')
+        print(f'Decimal arithmetic using local context {local_result}')
+
+    final_result = Decimal('1.234567') + Decimal('2.345678')
+    print(f'Decimal arithmetic using global context {final_result}')
 
 
 # class MyTestTest(TestCase):
@@ -84,5 +106,6 @@ if __name__ == '__main__':
     # with a_custom_context():
     #     print('Using resource - context manager from contextlib')
     #
-    with ManagedResource():
-        print('Using resource - context manager from a class')
+    # with ManagedResource():
+    #     print('Using resource - context manager from a class')
+    decimal_context()
