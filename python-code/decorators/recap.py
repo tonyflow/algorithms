@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 
 
-def decorator(func: Callable[[Any], Any]):
+def decorator(func: Callable[..., Any]):
     def wrapper(*args, **kwargs):
         print('a')
         func(*args, **kwargs)
@@ -13,10 +13,10 @@ def decorator(func: Callable[[Any], Any]):
 
 
 def decorator_with_args(a: int):
-    def decorator_a(func: Callable[[], None]):
+    def decorator_a(func: Callable[..., None]):
         def wrapper(*args, **kwargs):
             print(f'This is {a}')
-            func()
+            func(args, kwargs)
             print(f'This is {a}')
 
         return wrapper

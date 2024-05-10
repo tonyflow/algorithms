@@ -1,4 +1,41 @@
 from typing import List, Any, Tuple
+from collections import ChainMap as Environment
+from typing import TypeVar
+
+Expression = List[str]
+
+
+class Symbol:
+    """
+    Dummy class to test class pattern matching
+    """
+
+    def __init__(self, x: str):
+        self.s: str = x
+
+    def __repr__(self):
+        return f'Symbol({self.s})'
+
+
+# Expression = TypeVar('Expression')
+def evaluate(expression: Expression, environment: Environment) -> Any:
+    match expression:
+        case ['quote', x]:
+            return x
+        case ['if', test, consequence, alternative]:
+            if evaluate(test, environment):
+                return evaluate(consequence, environment)
+            else:
+                return evaluate(alternative, environment)
+        case ['lambda', [*params], *body] if body:
+            print(f'Identified a lambda expression with params {params} and body {body}')
+        case ['define', Symbol() as symbol, value_exp]:
+            print(f'Identified a function definition with symbols {str(symbol)} and value expression {value_exp}')
+        case ['define', [Symbol() as symbol, *params], *body]:
+            print(f'Alternative function definition with symbols {symbol} and others {params} and body {body}')
+
+        case _:
+            raise SyntaxError(f'Malformed expression {expression}')
 
 
 def handle_message(message: List[Any]) -> str:
@@ -14,7 +51,7 @@ def handle_message(message: List[Any]) -> str:
 def metro_match(d: Tuple[str, str, float, Tuple[float, float]]):
     match d:
         case [*_, (longitude, platitude) as coordinates] if longitude > 30:
-        # case [_, _, _, (longitude, platitude) as coordinates] if longitude > 30:
+            # case [_, _, _, (longitude, platitude) as coordinates] if longitude > 30:
             print(coordinates)
 
 
@@ -30,3 +67,47 @@ if __name__ == '__main__':
 
     for m_data in metro_areas:
         metro_match(m_data)
+
+    environment = Environment(
+        {
+            'foo': 'bar'
+        }
+    )
+
+    evaluate(
+        [
+            'define',
+            [Symbol('function_name'), 'a', 'b', 'c'],
+            [
+                [
+                    'n'
+                ],
+                [
+                    '*', 'n', 2
+                ]
+            ]
+        ],
+        environment
+    )
+
+    evaluate(
+        [
+            'define',
+            Symbol('double'),
+            [
+                'lambda',
+                [
+                    'n'
+                ],
+                [
+                    '*', 'n', 2
+                ]
+            ]
+        ], environment)
+
+    evaluate(
+        [
+            'lambda',
+            ['x'],
+            ['*', 'x', 2]], environment
+    )
