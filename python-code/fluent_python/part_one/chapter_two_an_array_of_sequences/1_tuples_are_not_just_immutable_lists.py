@@ -54,5 +54,4 @@ if __name__ == '__main__':
     objects they contain. For tuples, these references are held in an array inside the tuple struct.
     A list though has a reference to an array of those object references held elsewhere. This is 
     necessary since this array might need to be extended due the mutable nature of lists.
-    
     """
