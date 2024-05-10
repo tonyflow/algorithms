@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FIndWordsThatCanBeFormedByCharacters {
-
+public class FindWordsThatCanBeFormedByCharacters {
     static int find(String[] words, String chars) {
 
         // Determine frequencies
