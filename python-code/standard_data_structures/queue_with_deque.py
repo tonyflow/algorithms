@@ -1,5 +1,5 @@
 from collections import deque
-from typing import *
+from typing import Deque
 
 if __name__ == '__main__':
     d: Deque = deque()
@@ -11,5 +11,5 @@ if __name__ == '__main__':
     d.append(5)
 
     while d:
-        item = d.pop()
+        item = d.pop(0)
         print(item)

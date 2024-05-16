@@ -15,6 +15,8 @@ are not sequences because the ordering of set items is unspecified.
 
 from array import array
 from random import random
+from collections import deque
+from typing import Deque
 
 if __name__ == '__main__':
     """
@@ -35,14 +37,23 @@ if __name__ == '__main__':
     bytes: immutable
     bytearray: mutable
     """
-    with open('some_image.png', 'rb') as im:
-        byte_load: bytes = im.read()
-        # byte_load: bytes = bytearray(im.read())
+    # with open('some_image.png', 'rb') as im:
+    #     byte_load: bytes = im.read()
+    #     # byte_load: bytes = bytearray(im.read())
 
     """
     memoryview: Similar to numpy matrices. Used for reshaping arrays and lists
     once cast to memviews
     """
+    octets: array = array('B', range(6))
+    mem_view_1 = memoryview(octets)
+    print(mem_view_1.tolist())
+    mem_view_2: memoryview = mem_view_1.cast('B', [2, 3])
+    print(mem_view_2.tolist())
+    mem_view_3: memoryview = mem_view_1.cast('B', [3, 2])
+    print(mem_view_3.tolist())
+    print(mem_view_2[1, 1])
+    print(mem_view_3[1, 1])
 
     """
     deques: The class collections.deque is a thread-safe double-ended queue designed 
@@ -51,3 +62,9 @@ if __name__ == '__main__':
     can be bounded —i.e., created with a fixed maximum length. If a bounded deque is full, 
     when you add a new item, it discards an item from the opposite end.
     """
+    d: Deque = deque()
+    d.append(1)
+    d.append(2)
+    d.append(3)
+    while d:
+        print(d.pop())

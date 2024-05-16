@@ -1,4 +1,4 @@
-from typing import *
+from typing import List
 
 if __name__ == '__main__':
     queue: List[int] = [1, 2, 3, 4]

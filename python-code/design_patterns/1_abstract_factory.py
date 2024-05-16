@@ -1,0 +1,3 @@
+"""
+Abstract factory design pattern
+"""
