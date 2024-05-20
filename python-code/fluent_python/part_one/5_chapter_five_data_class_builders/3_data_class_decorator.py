@@ -71,7 +71,7 @@ if __name__ == '__main__':
         print(f'Correct! It should have produced an Attribute error and it did: {ae}')
 
     """
-    More on dataclass
+    More on dataclasses
     
     @dataclass(*, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
     """

@@ -21,9 +21,9 @@ if __name__ == '__main__':
     of have a try catch on multiple decoders
     """
 
-    # with open('test_resources/test_file.txt', mode='r', encoding='utf_8') as f:
-    #     for line in f.readlines():
-    #         print(line)
+    with open('test_resources/test_file.txt', mode='r', encoding='utf_8') as f:
+        for line in f.readlines():
+            print(line)
 
     with open('test_resources/write_output.txt', mode='w', encoding='utf_8') as f:
         f.write('let me test this')

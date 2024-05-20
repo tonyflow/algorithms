@@ -20,6 +20,9 @@ class DecoratedCoordinate:
 
 
 class CoordinateTuple(NamedTuple):
+    """
+    This is a metaclass and not a subclass of NamedTuple
+    """
     lat: float
     lon: float
 
@@ -42,8 +45,8 @@ class Coordinate:
 if __name__ == '__main__':
     """
     Using the data class that we created ourselves:
-    - Does not provide a meaningful __repr__ implementation
-    - Cannot reason correctly about object equality. __eq__ has to be overriden in order
+    - Does not provide a meaningful __repr__ implementation unless we override it ourselves
+    - Cannot reason correctly about object equality. __eq__ has to be overridden in order
     to properly account for longitude and latitude.
     """
     a: Coordinate = Coordinate(1, 2)
@@ -80,7 +83,3 @@ if __name__ == '__main__':
     print(issubclass(CoordinateTuple, tuple))
     print(get_type_hints(CoordinateTuple))
     print(foo == CoordinateTuple(lat=3.23, lon=5.67))
-
-    """
-    dataclass decorator
-    """

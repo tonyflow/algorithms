@@ -11,6 +11,16 @@ def decorator(func: Callable[..., Any]):
 
     return wrapper
 
+def decorator_two(func):
+    def wrapper(*args,**kwargs):
+        print('a')
+        result = func(*args,**kwargs)
+        print('b')
+        return result
+
+    return wrapper
+
+
 
 def decorator_with_args(a: int):
     def decorator_a(func: Callable[..., None]):
@@ -22,6 +32,20 @@ def decorator_with_args(a: int):
         return wrapper
 
     return decorator_a
+
+def decorator_with_args_two(a:int):
+    def decorator_b(func):
+        def wrapper(*args,**kwargs):
+            print(f'start {a}')
+            result = func(*args,**kwargs)
+            print(f'end {a}')
+            return result
+        return wrapper
+    return decorator_b
+
+@decorator_with_args_two(a=45)
+def bar():
+    return 45
 
 
 @decorator
@@ -78,7 +102,9 @@ def another():
 
 
 if __name__ == '__main__':
-    hello()
-    other()
-    yet_another()
-    another()
+    # hello()
+    # other()
+    # yet_another()
+    # another()
+
+    print(bar())

@@ -7,7 +7,7 @@ class ASingleton:
 
     def __new__(cls, *args, **kwargs):
         if not cls.instance:
-            cls.instance = super(ASingleton, cls).__new__(cls)
+            cls.instance = super(ASingleton, cls).__new__(cls, )
 
         return cls.instance
 
@@ -52,12 +52,12 @@ if __name__ == '__main__':
 
     foo = ASingleton()
     bar = ASingleton()
-    print(foo is bar)
+    print(f'Checking singleton equality {foo is bar}')
 
     l1 = [3, [66, 55, 44], (7, 8, 9)]
     l2 = list(l1)
     l1.append(100)
-    l1[1].remove(55)
+    l1[1].remove(55) # this will remove 55 from both lists!!!
     print('l1:', l1)
     print('l2:', l2)
     l2[1] += [33, 22]
@@ -83,6 +83,3 @@ if __name__ == '__main__':
     a.append(b)
     # In this case deepcopy managed to handle the cyclic reference
     c = deepcopy(a)
-
-
-

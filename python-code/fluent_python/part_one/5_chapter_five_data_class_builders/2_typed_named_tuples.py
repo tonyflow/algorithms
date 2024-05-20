@@ -17,7 +17,7 @@ if __name__ == '__main__':
     try:
         DemoNTClass()
     except TypeError as te:
-        print('Correct!')
+        print('Correct! Since a does not have a default value and no value is provided upon creation')
 
     foo: DemoNTClass = DemoNTClass(a=1)
     print(DemoNTClass.__annotations__)

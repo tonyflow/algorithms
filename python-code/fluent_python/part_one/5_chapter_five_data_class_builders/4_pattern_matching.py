@@ -7,7 +7,7 @@ if __name__ == '__main__':
     are:
       bytes   dict   float   frozenset   int   list   set   str   tuple
       
-    In those classes, the variable that looks like a constructor argument—e.g., the x in float(x)—is bound to the whole 
+    In those classes, the variable that looks like a constructor argument—e.g., the x in float(x) is bound to the whole 
     subject instance or the part of the subject that matches a subpattern
     """
 
