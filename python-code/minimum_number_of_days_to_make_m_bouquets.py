@@ -2,10 +2,11 @@ from typing import List
 
 
 class Solution:
-    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
-        def can_make_m_bouquets(days_candidate: int) -> bool:
-            """
-            [1,1,3,3,2,2,4,4],2
+    """
+    Interesting post on binary search for solution space search
+    https://leetcode.com/problems/koko-eating-bananas/solutions/769702/python-clear-explanation-powerful-ultimate-binary-search-template-solved-many-problems
+
+     [1,1,3,3,2,2,4,4],2
             bloomed_indices = [0,1,4,5]
             for i in [0,3):
                 i = 0
@@ -31,7 +32,10 @@ class Solution:
                     bi[1] = 1
                     bi[0] + 1 = bi[1]
 
-            """
+    """
+
+    def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+        def can_make_m_bouquets(days_candidate: int) -> bool:
             bloomed_indices: List[int] = []
             for i in range(len(bloomDay)):
                 if bloomDay[i] <= days_candidate:

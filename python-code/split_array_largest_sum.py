@@ -40,23 +40,20 @@ class Solution:
 
     def splitArray(self, nums: List[int], k: int) -> int:
 
-        left, right = min(nums), sum(nums)
+        left, right = max(nums), sum(nums)
 
         def can_split(candidate_sum: int) -> bool:
-            total_splits: int = 1
+            total_splits: int = 0
             total_sum: int = 0
             for n in nums:
                 if total_sum + n > candidate_sum:
-                    total_sum = n
+                    total_sum = 0
                     total_splits += 1
+                total_sum += n
 
-                    # Early stop
-                    # if total_splits > k:
-                    #     return False
-                else:
-                    total_sum += n
-
-            return total_splits <= k
+            # If we have split the array x times, then we are handling x + 1 contiguous sub-arrays thus the
+            # total splits should strictly smaller than k
+            return total_splits < k
 
         while left < right:
             middle: int = left + (right - left) // 2
@@ -71,4 +68,4 @@ class Solution:
 if __name__ == '__main__':
     solution: Solution = Solution()
     print(solution.splitArray([7, 2, 5, 10, 8], 2))
-    print(solution.splitArray([1,4,4], 3))
+    print(solution.splitArray([1, 4, 4], 3))

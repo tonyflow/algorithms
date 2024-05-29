@@ -8,6 +8,25 @@ public class BackspaceStringCompare {
         return process(s).equals(process(t));
     }
 
+    String processFoo(String s) {
+        Stack<Character> stack = new Stack<>();
+        StringBuilder builder = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (c == '#' && !stack.isEmpty()) {
+                stack.pop();
+            } else if (c != '#') {
+                stack.add(c);
+            }
+        }
+
+
+        while (!stack.isEmpty()){
+            builder.insert(0, stack.pop());
+        }
+
+        return builder.toString();
+    }
+
     String process(String s) {
         Stack<Character> stack = new Stack<>();
         StringBuilder builder = new StringBuilder();
