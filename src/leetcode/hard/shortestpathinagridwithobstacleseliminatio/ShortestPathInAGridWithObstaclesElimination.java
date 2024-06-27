@@ -31,10 +31,10 @@ public class ShortestPathInAGridWithObstaclesElimination {
                 if (polled.r == grid.length - 1 && polled.c == grid[0].length - 1)
                     return path;
 
-                for (int j = 0; j < directions.length; j++) {
+                for (int[] direction : directions) {
                     // For every different direction recompute the dimensions of the problem
-                    int nextR = polled.r + directions[j][0];
-                    int nextC = polled.c + directions[j][1];
+                    int nextR = polled.r + direction[0];
+                    int nextC = polled.c + direction[1];
                     int nextK = polled.dynamites;
 
                     if (inBounds(nextR, nextC, grid)) {

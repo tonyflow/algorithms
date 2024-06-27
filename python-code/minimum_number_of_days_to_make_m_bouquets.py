@@ -38,6 +38,16 @@ class Solution:
     """
 
     def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+        def can_make_m_bouquets_effective(days_candidate: int) -> bool:
+            bouquets, flowers = 0, 0
+            for bd in bloomDay:
+                if bd > days_candidate:
+                    flowers = 0
+                else:
+                    bouquets = (flowers+1)//k
+                    flowers = (flowers + 1) % k
+            return bouquets >= m
+
         def can_make_m_bouquets(days_candidate: int) -> bool:
             bloomed_indices: List[int] = []
             for i in range(len(bloomDay)):
@@ -78,7 +88,8 @@ class Solution:
         left, right = 1, max(bloomDay)
         while left < right:
             middle: int = left + (right - left) // 2
-            if can_make_m_bouquets(middle):
+            # if can_make_m_bouquets(middle):
+            if can_make_m_bouquets_effective(middle):
                 right = middle
             else:
                 left = middle + 1

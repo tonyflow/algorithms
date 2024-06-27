@@ -18,24 +18,25 @@ def value(roman: str) -> int | None:
     if not included_characters or not included_characters.issubset(roman_mapping.keys()):
         return None
 
-    last_digit = roman_lower[-1]
+    last_digit = roman_lower[0]
     # print(last_digit, roman_lower)
     result = roman_mapping[last_digit]
 
     if len(roman) == 1:
         return result
-    reversed_roman = reversed(roman_lower[:- 1])
-    for c in reversed_roman:
+
+    # xiix
+    for c in roman_lower[1:]:
         # print(f'c, roman_mapping[c]: {c, roman_mapping[c]}')
         # print(f'last_digit, roman_mapping[last_digit] {last_digit,roman_mapping[last_digit]}')
-        if roman_mapping[c] >= roman_mapping[last_digit]:
+        if roman_mapping[c] <= roman_mapping[last_digit]:
             result += roman_mapping[c]
             # print(f'result {result}')
         else:
-            result -= roman_mapping[c]
+            result = abs(result - roman_mapping[c])
             # print(f'result {result}')
 
-        if roman_mapping[c] > roman_mapping[last_digit]:
+        if roman_mapping[c] < roman_mapping[last_digit]:
             last_digit = c
 
     return result

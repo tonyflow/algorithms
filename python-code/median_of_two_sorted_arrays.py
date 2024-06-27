@@ -27,8 +27,8 @@ class Solution:
     """
 
     def findMedianSortedArraysOne(self,
-                               nums1: List[int],
-                               nums2: List[int]) -> float:
+                                  nums1: List[int],
+                                  nums2: List[int]) -> float:
         merged: List[int] = sorted(nums1 + nums2)
         middle: int = len(merged) // 2
         if len(merged) % 2 == 0:
