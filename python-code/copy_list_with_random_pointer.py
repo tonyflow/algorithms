@@ -34,7 +34,7 @@ class Solution:
         return dummy.next
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     head: Node = Node(1, next=Node(2, next=Node(3, next=Node(4))))
     cloned: Node = Solution().copyRandomList(head)
     while cloned:

@@ -44,7 +44,7 @@ class Solution:
                 if bd > days_candidate:
                     flowers = 0
                 else:
-                    bouquets = (flowers+1)//k
+                    bouquets = (flowers + 1) // k
                     flowers = (flowers + 1) % k
             return bouquets >= m
 
@@ -54,7 +54,7 @@ class Solution:
                 if bloomDay[i] <= days_candidate:
                     bloomed_indices.append(i)
 
-            print(f'List of bloomed indices at {days_candidate} is {bloomed_indices}')
+            print(f"List of bloomed indices at {days_candidate} is {bloomed_indices}")
 
             # Check how many bouquets we can make by checking how many groups
             # of adjacent flowers we have
@@ -65,21 +65,24 @@ class Solution:
                 for index in bloomed_indices:
                     can_create_bouquet = True
                     for extender in range(1, k):
-                        print(f'Checking position {index + extender}')
+                        print(f"Checking position {index + extender}")
                         if index + extender not in bloomed_indices:
                             print(
-                                f'Starting from position {index}, adjacent position {index + extender} '
-                                f'has not bloomed so we cannot proceed further')
+                                f"Starting from position {index}, adjacent position {index + extender} "
+                                f"has not bloomed so we cannot proceed further"
+                            )
                             can_create_bouquet = False
                             break
                         else:
                             bloomed_indices.remove(index + extender)
-                            print(f'Remaining indices {bloomed_indices}')
+                            print(f"Remaining indices {bloomed_indices}")
 
                     if can_create_bouquet:
                         number_of_bouquets += 1
 
-            print(f'Number of bouquets we can create with available days {days_candidate} is {number_of_bouquets}')
+            print(
+                f"Number of bouquets we can create with available days {days_candidate} is {number_of_bouquets}"
+            )
             return number_of_bouquets >= m
 
         if m * k > len(bloomDay):
@@ -97,7 +100,7 @@ class Solution:
         return left
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution = Solution()
     # print(solution.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=1))
     # print(solution.minDays(bloomDay=[1, 10, 3, 10, 2], m=3, k=2))

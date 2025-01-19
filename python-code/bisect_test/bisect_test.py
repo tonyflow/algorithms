@@ -1,6 +1,6 @@
 import bisect
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_list: list[int] = [78, 4, 56]
     sorted_test_list: list[int] = []
     for n in test_list:

@@ -10,17 +10,16 @@ class Solution:
         self._postorder(root)
         return root
 
-    def _postorder(self,
-                   root: Optional[TreeNode]):
+    def _postorder(self, root: Optional[TreeNode]):
         if root:
             self._postorder(root.right)
-            print(f'Convert {root.val} to {root.val + self.to_add}')
+            print(f"Convert {root.val} to {root.val + self.to_add}")
             root.val += self.to_add
             self.to_add = root.val
             self._postorder(root.left)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root: TreeNode = TreeNode(4)
     root.left = TreeNode(1)
     root.left.left = TreeNode(0)

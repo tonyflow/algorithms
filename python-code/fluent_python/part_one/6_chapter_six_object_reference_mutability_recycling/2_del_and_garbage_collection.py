@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     del deletes references not objects
     """
@@ -22,15 +22,13 @@ if __name__ == '__main__':
     s1 = {1, 2, 3}
     s2 = s1
 
-
     def bye():
-        print('...like tears in the rain')
-
+        print("...like tears in the rain")
 
     ender = weakref.finalize(s1, bye)
     print(ender.alive)
     del s1
-    s2 = 'spam'
+    s2 = "spam"
     """
     You may be wondering why the {1, 2, 3} object was destroyed in after re-referenced s2 as well. After all, the s1 
     reference was passed to the finalize function, which must have held on to it in order to monitor the object and 

@@ -1,9 +1,9 @@
 import heapq
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pq = []
 
-    heapq.heappush(pq,2)
+    heapq.heappush(pq, 2)
     heapq.heappush(pq, 23)
     heapq.heappush(pq, -2)
     heapq.heappush(pq, 45)

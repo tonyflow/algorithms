@@ -2,7 +2,6 @@ import math
 
 
 class Vector:
-
     def __init__(self, x: int = 0, y: int = 0):
         self.x = x
         self.y = y
@@ -12,7 +11,7 @@ class Vector:
         !r returns the __repr__ method value of the object is used upon. Otherwise, the
         interpreter uses the str(obj) method on the object.
         """
-        return f'Vector({self.x!r},{self.y!r})'
+        return f"Vector({self.x!r},{self.y!r})"
 
     def __abs__(self):
         return math.hypot(self.x, self.y)
@@ -27,7 +26,7 @@ class Vector:
         return Vector(scalar * self.x, scalar * self.y)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     vector: Vector = Vector(1, 3)
     other: Vector = Vector(4, 5)
     print(vector + other)
@@ -36,9 +35,9 @@ if __name__ == '__main__':
     print(vector)
     # if Vector():
     if vector:
-        print('Evaluated truthy')
+        print("Evaluated truthy")
     else:
-        print('Evaluated falsy')
+        print("Evaluated falsy")
 
     an_intersection = {1, 2, 3, 4, 5} & {4, 5}
     print(an_intersection)

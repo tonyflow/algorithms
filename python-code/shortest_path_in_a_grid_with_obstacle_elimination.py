@@ -8,11 +8,13 @@ class Cell(NamedTuple):
 
 
 class Coordinate:
-    def __init__(self,
-                 i: int,
-                 j: int,
-                 obstacles_eliminated: int,
-                 parent: Optional['Coordinate'] = None):
+    def __init__(
+        self,
+        i: int,
+        j: int,
+        obstacles_eliminated: int,
+        parent: Optional["Coordinate"] = None,
+    ):
         self.i = i
         self.j = j
         self.obstacles_eliminated = 0
@@ -30,16 +32,20 @@ class Solution:
     def in_grid(self, grid: List[List[int]], i: int, j: int) -> bool:
         return len(grid) > i >= 0 and len(grid[0]) > j >= 0
 
-    def shortestPathCoordinates(self, grid: List[List[int]], k: int) -> List[Tuple[int, int]]:
+    def shortestPathCoordinates(
+        self, grid: List[List[int]], k: int
+    ) -> List[Tuple[int, int]]:
         starting_node: Coordinate = Coordinate(i=0, j=0, obstacles_eliminated=0)
         q: List[Coordinate] = [starting_node]
         # visited: List[List[List[bool]]] = [[[False] * (k + 1)] * len(grid[0])] * len(grid)
-        visited: List[List[List[bool]]] = [[[False for _ in range(k + 1)] \
-                                            for _ in range(len(grid[0]))] \
-                                           for _ in
-                                           range(len(grid))]
+        visited: List[List[List[bool]]] = [
+            [[False for _ in range(k + 1)] for _ in range(len(grid[0]))]
+            for _ in range(len(grid))
+        ]
 
-        visited[starting_node.i][starting_node.j][starting_node.obstacles_eliminated] = True
+        visited[starting_node.i][starting_node.j][
+            starting_node.obstacles_eliminated
+        ] = True
 
         path_length: int = 0
 
@@ -81,12 +87,14 @@ class Solution:
         starting_node: Cell = Cell(i=0, j=0, obstacles_eliminated=0)
         q: List[Cell] = [starting_node]
         # visited: List[List[List[bool]]] = [[[False] * (k + 1)] * len(grid[0])] * len(grid)
-        visited: List[List[List[bool]]] = [[[False for _ in range(k + 1)] \
-                                            for _ in range(len(grid[0]))] \
-                                           for _ in
-                                           range(len(grid))]
+        visited: List[List[List[bool]]] = [
+            [[False for _ in range(k + 1)] for _ in range(len(grid[0]))]
+            for _ in range(len(grid))
+        ]
 
-        visited[starting_node.i][starting_node.j][starting_node.obstacles_eliminated] = True
+        visited[starting_node.i][starting_node.j][
+            starting_node.obstacles_eliminated
+        ] = True
 
         path_length: int = 0
 
@@ -118,23 +126,13 @@ class Solution:
         return -1
 
 
-if __name__ == '__main__':
-    test_grid = [
-        [0, 0, 0],
-        [1, 1, 0],
-        [0, 0, 0],
-        [0, 1, 1],
-        [0, 0, 0]
-    ]
+if __name__ == "__main__":
+    test_grid = [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]]
     solution: Solution = Solution()
-    pl: int = solution.shortestPathLength(
-        grid=test_grid,
-        k=1
-    )
+    pl: int = solution.shortestPathLength(grid=test_grid, k=1)
     print(pl)
 
     shortest_path: List[Coordinate] = solution.shortestPathCoordinates(
-        grid=test_grid,
-        k=1
+        grid=test_grid, k=1
     )
     print(shortest_path)

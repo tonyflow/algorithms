@@ -10,24 +10,25 @@ class Solution:
         b: ListNode = head
         for _ in range(n + 1):
             b = b.next
-            print(f'Value for b is {b.val}')
+            print(f"Value for b is {b.val}")
 
-        print('Removing')
+        print("Removing")
         while b:
             a = a.next
             b = b.next
             if b:
-                print(f'Value for b is {b.val}')
-            print(f'Value for a is {a.val}')
+                print(f"Value for b is {b.val}")
+            print(f"Value for a is {a.val}")
 
         a.next = a.next.next
 
         return dummy.next
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     result: ListNode = Solution().removeNthFromEnd(
-        ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6)))))), 3)
+        ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6)))))), 3
+    )
     while result:
         print(result.val)
         result = result.next

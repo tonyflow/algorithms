@@ -4,20 +4,22 @@ from typing import NamedTuple, get_type_hints
 class Coordinate(NamedTuple):
     lat: float
     lon: float
-    reference: str = 'WGS84'
+    reference: str = "WGS84"
 
 
 class DemoNTClass(NamedTuple):
     a: int
     b: float = 1.1
-    c = 'spam'
+    c = "spam"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         DemoNTClass()
     except TypeError as te:
-        print('Correct! Since a does not have a default value and no value is provided upon creation')
+        print(
+            "Correct! Since a does not have a default value and no value is provided upon creation"
+        )
 
     foo: DemoNTClass = DemoNTClass(a=1)
     print(DemoNTClass.__annotations__)

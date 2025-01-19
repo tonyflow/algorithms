@@ -18,18 +18,18 @@ from random import random
 from collections import deque
 from typing import Deque
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     array(typecode [, initializer]) -> array
     """
-    a = array('d', (random() for _ in range(10 ** 7)))
-    with open('floats.bin', 'wb') as ff:
+    a = array("d", (random() for _ in range(10**7)))
+    with open("floats.bin", "wb") as ff:
         a.tofile(ff)
 
-    b = array('d')
-    with open('floats.bin', 'rb') as ff:
-        b.fromfile(ff, 10 ** 7)
-        print(f'Read {len(b)}')
+    b = array("d")
+    with open("floats.bin", "rb") as ff:
+        b.fromfile(ff, 10**7)
+        print(f"Read {len(b)}")
     # print(a)
     # b = array('b', (random() for _ in range(100)))
 
@@ -45,12 +45,12 @@ if __name__ == '__main__':
     memoryview: Similar to numpy matrices. Used for reshaping arrays and lists
     once cast to memviews
     """
-    octets: array = array('B', range(6))
+    octets: array = array("B", range(6))
     mem_view_1 = memoryview(octets)
     print(mem_view_1.tolist())
-    mem_view_2: memoryview = mem_view_1.cast('B', [2, 3])
+    mem_view_2: memoryview = mem_view_1.cast("B", [2, 3])
     print(mem_view_2.tolist())
-    mem_view_3: memoryview = mem_view_1.cast('B', [3, 2])
+    mem_view_3: memoryview = mem_view_1.cast("B", [3, 2])
     print(mem_view_3.tolist())
     print(mem_view_2[1, 1])
     print(mem_view_3[1, 1])

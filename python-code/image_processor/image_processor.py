@@ -8,5 +8,5 @@ class ImageProcessor:
         self.directory: Path = Path(input_dir)
 
     def load(self):
-        for image in self.directory.glob('**/*.jpg'):
+        for image in self.directory.glob("**/*.jpg"):
             Image.open(image)

@@ -20,8 +20,8 @@ class Solution:
                 stack.append(s[i])
                 visited.add(s[i])
 
-        return ''.join(stack)
+        return "".join(stack)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(Solution().removeDuplicateLetters("cbacdcbc"))

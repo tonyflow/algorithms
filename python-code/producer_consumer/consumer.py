@@ -10,7 +10,7 @@ class Consumer:
     def _consume(self):
         while True:
             next_item: int = self.queue.get()
-            print(f'Consumer Thread {get_ident()}: Received item {next_item}')
+            print(f"Consumer Thread {get_ident()}: Received item {next_item}")
             self.queue.task_done()
 
     def start(self):

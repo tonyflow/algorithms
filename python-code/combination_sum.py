@@ -2,7 +2,6 @@ from typing import *
 
 
 class Solution:
-
     def __init__(self):
         self.result: Set[List[int]] = set()
 
@@ -10,11 +9,13 @@ class Solution:
         self._do_combine(candidates, 0, [], target)
         return self.result
 
-    def _do_combine(self, candidates: List[int],
-                    path_sum: int,
-                    candidates_in_path: List[int],
-                    target: int):
-
+    def _do_combine(
+        self,
+        candidates: List[int],
+        path_sum: int,
+        candidates_in_path: List[int],
+        target: int,
+    ):
         if path_sum > target:
             return
 
@@ -28,6 +29,6 @@ class Solution:
             candidates_in_path.pop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s: Solution = Solution()
     print(s.combinationSum([2, 3, 6, 7], 7))

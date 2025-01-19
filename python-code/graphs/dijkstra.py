@@ -3,17 +3,16 @@ from heapq import *
 
 
 class Dijkstra:
-    def __init__(self,
-                 graph: Dict[int, Dict[int, float]],
-                 origin: int):
+    def __init__(self, graph: Dict[int, Dict[int, float]], origin: int):
         self.graph = graph
         self.edge_to: Dict[int, int] = {}
-        self.distances: Dict[int, float] = {vertex: float('inf') for vertex in self.graph}
+        self.distances: Dict[int, float] = {
+            vertex: float("inf") for vertex in self.graph
+        }
         self.origin = origin
         self._find(self.origin)
 
     def _find(self, node: int):
-
         self.distances[node] = 0
 
         # Priority queue which stores tuples from distance to node id
@@ -50,12 +49,12 @@ class Dijkstra:
         return path
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     graph = {
         1: {2: 1, 3: 4},
         2: {1: 1, 3: 2, 4: 5},
         3: {1: 4, 2: 2, 4: 1},
-        4: {2: 5, 3: 1}
+        4: {2: 5, 3: 1},
     }
 
     dijkstra: Dijkstra = Dijkstra(graph, 1)

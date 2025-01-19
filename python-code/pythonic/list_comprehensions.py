@@ -15,6 +15,6 @@ def meets_criteria(x: int) -> bool:
     return x > 50
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     result = [convert_to_other(x) for x in get_xs() if meets_criteria(x)]
     print(result)

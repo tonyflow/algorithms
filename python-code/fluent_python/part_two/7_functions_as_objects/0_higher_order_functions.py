@@ -19,7 +19,7 @@ def factorial(n: int):
     return 1 if n < 2 else n * factorial(n - 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(factorial(4))
     print(factorial.__doc__)
     print(type(factorial))
@@ -40,26 +40,28 @@ if __name__ == '__main__':
     - reverse
     - apply => now deprecated
     """
-    fruits = ['strawberry', 'fig', 'apple', 'cherry', 'raspberry', 'banana']
+    fruits = ["strawberry", "fig", "apple", "cherry", "raspberry", "banana"]
     sorted_by_length = sorted(fruits, key=len)
     print(sorted_by_length)
 
     old_fashioned_map: List[int] = list(map(factorial, range(4)))
     modern_map: List[int] = [factorial(x) for x in range(4)]
-    old_fashioned_map_2: List[int] = list(map(factorial, filter(lambda x: x % 2 == 0, range(10))))
+    old_fashioned_map_2: List[int] = list(
+        map(factorial, filter(lambda x: x % 2 == 0, range(10)))
+    )
     modern_map_2: List[int] = [factorial(x) for x in range(10) if x % 2 == 0]
 
     from functools import reduce
     from operator import add
 
     old_fashioned_sum: int = reduce(add, range(5))
-    print(f'old_fashioned_sum {old_fashioned_sum}')
+    print(f"old_fashioned_sum {old_fashioned_sum}")
     modern_sum = sum(range(5))
-    print(f'modern_sum {modern_sum}')
+    print(f"modern_sum {modern_sum}")
 
     # Other nice reducing build ins
     if all([x % 2 == 0 for x in range(2, 11, 2)]):
-        print('all works correctly!')
+        print("all works correctly!")
 
     if any(x % 2 == 0 for x in range(100)):
-        print('any works correctly as well!')
+        print("any works correctly as well!")

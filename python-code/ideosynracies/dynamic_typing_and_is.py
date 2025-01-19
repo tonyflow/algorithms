@@ -1,4 +1,4 @@
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     ==: Check if two variables have the same value
     is: Check if two variables point to the same object!

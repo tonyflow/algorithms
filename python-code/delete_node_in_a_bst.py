@@ -3,13 +3,12 @@ from tree_node import TreeNode
 
 
 class Solution:
-    '''
+    """
     - Find the node of the existing tree which has val == key
 
-    '''
+    """
 
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
-
         if not root:
             return None
 
@@ -36,7 +35,7 @@ class Solution:
         return root
 
     def _find_minimum(self, root: Optional[TreeNode]) -> int:
-        min_val = float('inf')
+        min_val = float("inf")
         while root:
             min_val = min(min_val, root.val)
             root = root.left

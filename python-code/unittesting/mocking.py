@@ -7,7 +7,6 @@ def a_method() -> int:
 
 
 class DummyClass:
-
     def __init__(self, n: int):
         self.n = n
 
@@ -16,18 +15,17 @@ class DummyClass:
 
 
 class MockingTestCase(unittest.TestCase):
-
-    @patch('mocking.a_method')
+    @patch("mocking.a_method")
     def test_with_mocking(self, mocked_method: Mock):
         mocked_method.return_value = 6
         self.assertEqual(a_method(), 6)
 
-    @patch.object(DummyClass, 'foo')
+    @patch.object(DummyClass, "foo")
     def test_with_mocked_object(self, mocked_method: Mock):
         dummy_class: DummyClass = DummyClass(34)
         mocked_method.return_value = 45
         self.assertEqual(dummy_class.foo(), 45)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

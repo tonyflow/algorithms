@@ -1,12 +1,12 @@
 from collections import OrderedDict
 from typing import *
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # maintains insertion order but no key order
     od = OrderedDict()
-    od['c'] = 3
-    od['a'] = 1
-    od['b'] = 2
+    od["c"] = 3
+    od["a"] = 1
+    od["b"] = 2
     sorted_d = dict(sorted(od.items()))
     print(od)
     print(sorted_d)

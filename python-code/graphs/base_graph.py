@@ -3,10 +3,7 @@ from typing import *
 
 
 class BaseGraph:
-
-    def __init__(self,
-                 graph: Dict[int, Set[int]],
-                 origin: int):
+    def __init__(self, graph: Dict[int, Set[int]], origin: int):
         self.graph: Dict[int, Set[int]] = graph
         self.origin: int = origin
         self.visited: Set[int] = set()

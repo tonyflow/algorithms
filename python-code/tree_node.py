@@ -5,4 +5,4 @@ class TreeNode:
         self.right = None
 
     def __repr__(self):
-        return f'value = {self.val}'
+        return f"value = {self.val}"

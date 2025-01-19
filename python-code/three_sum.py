@@ -23,5 +23,5 @@ class Solution:
         return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(Solution().threeSum([-1, 0, 1, 2, -1, -4]))

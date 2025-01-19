@@ -19,7 +19,6 @@ def _filter_entry(item):
 
 
 class TopologicalSort:
-
     def __init__(self):
         self.graph: Dict[int, Set[int]] = {}
         self.topo_sort_result: List[int] = {}
@@ -70,16 +69,10 @@ class TopologicalSort:
         return len(sort) == len(self.graph)
 
 
-if __name__ == '__main__':
-    d: Dict[int, List[int]] = {
-        1: [12, 23, 56],
-        2: [1, 23, 78, 123]
-    }
+if __name__ == "__main__":
+    d: Dict[int, List[int]] = {1: [12, 23, 56], 2: [1, 23, 78, 123]}
 
-    d_one: Dict[int, int] = {
-        1: 0,
-        2: 32
-    }
+    d_one: Dict[int, int] = {1: 0, 2: 32}
 
     filtered: Dict[int, int] = dict(filter(_filter_entry, d_one.items()))
 

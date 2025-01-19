@@ -7,10 +7,9 @@ class Retrier:
         self.max_retries = max_retries
         self.backoff_in_secs = backoff_in_secs
 
-    def retry(self, func: Callable[..., Any],
-              retry_count: int = 0,
-              *args,
-              **kwargs) -> Any:
+    def retry(
+        self, func: Callable[..., Any], retry_count: int = 0, *args, **kwargs
+    ) -> Any:
         try:
             return func(*args, **kwargs)
         except Exception as e:

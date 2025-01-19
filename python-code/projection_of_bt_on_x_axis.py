@@ -3,14 +3,12 @@ from collections import deque
 
 
 class ProjectionOfBTOnXAxis:
-
     def compute(self, root: TreeNode):
         left_end, right_end = 0, 0
         q: deque = deque()
         q.append((root, 0))
 
         while q:
-
             level_size = len(q)
             for _ in range(level_size):
                 node, hd = q.popleft()
@@ -73,7 +71,7 @@ def c_test():
     print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a_test()
     b_test()
     c_test()

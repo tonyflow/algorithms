@@ -5,7 +5,6 @@ import sys
 
 
 class SolutionBrute:
-
     @timer
     def canJump(self, nums: List[int]) -> bool:
         return self.jump(nums, 0)
@@ -26,47 +25,50 @@ class SolutionBrute:
 
 
 class SolutionMemoWithIndentation:
-
     def canJump(self, nums: List[int]) -> bool:
         memo: Dict[int, bool] = {}
         return self.jump(nums, memo, 0)
 
-    def jump(self,
-             nums: List[int],
-             memo: Dict[int, bool],
-             current_index: int,
-             indentation: str = '') -> bool:
+    def jump(
+        self,
+        nums: List[int],
+        memo: Dict[int, bool],
+        current_index: int,
+        indentation: str = "",
+    ) -> bool:
         # If we have reached the final cell, or we were able to exceed it, then return true
         if current_index >= len(nums) - 1:
-            print(f'{indentation}... I was able to reach {current_index}')
+            print(f"{indentation}... I was able to reach {current_index}")
             return True
 
         if current_index in memo:
-            print(f'{indentation}... Found {current_index} in memo table and returning  {memo[current_index]}')
+            print(
+                f"{indentation}... Found {current_index} in memo table and returning  {memo[current_index]}"
+            )
             return memo[current_index]
 
         decision = False
 
         for j in range(1, nums[current_index] + 1):
-            decision = decision | self.jump(nums, memo, current_index + j, indentation + '\t')
+            decision = decision | self.jump(
+                nums, memo, current_index + j, indentation + "\t"
+            )
 
         # Update memo
-        print(f'{indentation}... After recursion for {current_index} decided on {decision} for CANJUMP')
+        print(
+            f"{indentation}... After recursion for {current_index} decided on {decision} for CANJUMP"
+        )
         memo[current_index] = decision
         return memo[current_index]
 
 
 class SolutionMemo:
-
     @timer
     def canJump(self, nums: List[int]) -> bool:
         memo: Dict[int, bool] = {}
         return self.jump(nums, memo, 0)
 
-    def jump(self,
-             nums: List[int],
-             memo: Dict[int, bool],
-             current_index: int) -> bool:
+    def jump(self, nums: List[int], memo: Dict[int, bool], current_index: int) -> bool:
         # If we have reached the final cell, or we were able to exceed it, then return true
         if current_index >= len(nums) - 1:
             return True
@@ -85,15 +87,12 @@ class SolutionMemo:
 
 
 class SolutionLRUCache:
-
     @timer
     def canJump(self, nums: List[int]) -> bool:
         return self.jump(tuple(nums), 0)
 
     @lru_cache(maxsize=None)
-    def jump(self,
-             nums: Tuple[int, ...],
-             current_index: int) -> bool:
+    def jump(self, nums: Tuple[int, ...], current_index: int) -> bool:
         # If we have reached the final cell, or we were able to exceed it, then return true
         if current_index >= len(nums) - 1:
             return True
@@ -107,7 +106,6 @@ class SolutionLRUCache:
 
 
 class SolutionOptimal:
-
     @timer
     def canJump(self, nums: List[int]) -> bool:
         maxx = 0
@@ -122,7 +120,7 @@ class SolutionOptimal:
         return maxx >= len(nums) - 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution_lru_cache = SolutionLRUCache()
     solution_memo = SolutionMemo()
     solution_brute = SolutionBrute()

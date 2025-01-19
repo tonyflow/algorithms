@@ -1,7 +1,7 @@
 from collections import deque
 from typing import Deque
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     d: Deque = deque()
 
     d.append(1)

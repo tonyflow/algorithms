@@ -16,6 +16,3 @@ class Solution:
 
     def isBadVersion(self, version: int) -> bool:
         return True
-
-
-

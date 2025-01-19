@@ -12,7 +12,7 @@ class CustomDict2(UserDict):
         return [1, 2, 34]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     There are two main ways of handling missing dictionary values:
     1. Instantiate a defaultdict instead of a dict. The first argument of a defaultdict
@@ -26,17 +26,15 @@ if __name__ == '__main__':
     
     """
 
-
     def handle_missing():
         return [123]
 
-
     # test: Dict[str, List[int]] = defaultdict(list)
     test: Dict[str, List[int]] = defaultdict(handle_missing)
-    print(test['5'])
+    print(test["5"])
 
     test_2: CustomDict[str, List[int]] = CustomDict()
-    print(test_2['5'])
+    print(test_2["5"])
 
     test_3: CustomDict2[str, List[int]] = CustomDict2()
-    print(test_3['5'])
+    print(test_3["5"])

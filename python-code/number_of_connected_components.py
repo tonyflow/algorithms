@@ -3,12 +3,16 @@ from graph_node import Node
 
 
 class Solution:
-
     def __init__(self):
         self.components: int = 0
         self.visited: Set[int] = set()
 
-    def find_components(self, graph: {int, }) -> int:
+    def find_components(
+        self,
+        graph: {
+            int,
+        },
+    ) -> int:
         for node, neighbors in graph.items():
             if node.val not in self.visited:
                 self._do_find(node)

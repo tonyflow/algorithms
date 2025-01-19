@@ -4,8 +4,8 @@ from requests import get
 
 
 def get_list_of_words() -> list[str]:
-    response = get('https://www.mit.edu/~ecprice/wordlist.10000')
-    return [byteload.decode('utf-8') for byteload in response.content.splitlines()]
+    response = get("https://www.mit.edu/~ecprice/wordlist.10000")
+    return [byteload.decode("utf-8") for byteload in response.content.splitlines()]
 
 
 def random_word_list(size: int) -> list[str]:
@@ -16,10 +16,10 @@ def random_word_list(size: int) -> list[str]:
 class SomeClass(NamedTuple):
     a: int
     b: float = 0.0
-    c: str = 'a'
+    c: str = "a"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """Simple ordering-sorting
 
     Use one attribute or the default one to sort the collection
@@ -44,8 +44,10 @@ if __name__ == '__main__':
     # print(list_of_words)
 
     # Sort tuples in reverse order
-    some_tuples = [(randint(1, 100), randint(1, 100), randint(1, 100)) for _ in range(20)]
-    print(f'Length of some_tuples {len(some_tuples)}')
+    some_tuples = [
+        (randint(1, 100), randint(1, 100), randint(1, 100)) for _ in range(20)
+    ]
+    print(f"Length of some_tuples {len(some_tuples)}")
 
     # Sort by the first element
     some_tuples.sort(key=lambda t: t[0])
@@ -60,12 +62,16 @@ if __name__ == '__main__':
     Providing multiple attributes for sorting
     """
     # Sort tuples
-    other_tuples = [(randint(1, 4), randint(1, 100), randint(1, 100)) for _ in range(20)]
+    other_tuples = [
+        (randint(1, 4), randint(1, 100), randint(1, 100)) for _ in range(20)
+    ]
     other_tuples.sort(key=lambda t: (t[0], t[1]))
     print(other_tuples)
 
     # Sort classes
     list_of_words = random_word_list(size=50)
-    some_classes_other = [SomeClass(a=randint(1, 4), c=list_of_words[randint(0, 50)]) for _ in range(50)]
+    some_classes_other = [
+        SomeClass(a=randint(1, 4), c=list_of_words[randint(0, 50)]) for _ in range(50)
+    ]
     some_classes_other.sort(key=lambda sc: (sc.a, sc.c))
     print(some_classes_other)

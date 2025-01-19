@@ -17,7 +17,7 @@ def reverse(head: ListNode) -> ListNode:
     return previous
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     head = ListNode(1, ListNode(2, ListNode(3)))
 
     result: ListNode = reverse(head)

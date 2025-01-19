@@ -8,7 +8,7 @@ class MyClass:
         self.shared_list.append(item)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     obj1: MyClass = MyClass()
     obj2: MyClass = MyClass()
     obj2.add(45)

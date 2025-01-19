@@ -17,9 +17,9 @@ class Solution:
                 self.traverse(rooms, v)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     rooms = [[1, 3], [3, 0, 1], [2], [0]]
-    rooms_true = [[1],[2],[3],[]]
+    rooms_true = [[1], [2], [3], []]
     s: Solution = Solution()
     result: bool = s.canVisitAllRooms(rooms_true)
     print(result)

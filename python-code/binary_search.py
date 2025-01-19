@@ -24,7 +24,7 @@ def binary_search(r: List[int], target: int):
     return -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(binary_search([1, 2, 3, 12, 56, 63, 100], 100))
     print(binary_search([1, 2, 3, 12, 56, 63, 100], 63))
     print(binary_search([1, 2, 3, 12, 56, 63, 100], 1))

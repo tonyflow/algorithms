@@ -10,10 +10,10 @@ the comment.
 4. Remove the comment.
 """
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     The best use for an anonymous function in in an arguments list for a higher order function like sorted
     """
-    fruits = ['strawberry', 'fig', 'apple', 'cherry', 'raspberry', 'banana']
+    fruits = ["strawberry", "fig", "apple", "cherry", "raspberry", "banana"]
     sorted_reversed_fruits: List[str] = sorted(fruits, key=lambda x: x[::-1])
     print(sorted_reversed_fruits)

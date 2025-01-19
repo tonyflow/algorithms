@@ -26,9 +26,7 @@ class Solution:
     median
     """
 
-    def findMedianSortedArraysOne(self,
-                                  nums1: List[int],
-                                  nums2: List[int]) -> float:
+    def findMedianSortedArraysOne(self, nums1: List[int], nums2: List[int]) -> float:
         merged: List[int] = sorted(nums1 + nums2)
         middle: int = len(merged) // 2
         if len(merged) % 2 == 0:
@@ -36,11 +34,9 @@ class Solution:
         else:
             return merged[middle]
 
-    def findMedianSortedArrays(self,
-                               nums1: List[int],
-                               nums2: List[int]) -> float:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(Solution().findMedianSortedArrays([1, 3], [2]))

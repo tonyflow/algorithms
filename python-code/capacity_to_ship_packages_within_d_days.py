@@ -6,6 +6,7 @@ class Solution:
     Interesting post on binary search for solution space search
     https://leetcode.com/problems/koko-eating-bananas/solutions/769702/python-clear-explanation-powerful-ultimate-binary-search-template-solved-many-problems
     """
+
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         max_capacity = sum(weights)
         left, right = max(weights), max_capacity

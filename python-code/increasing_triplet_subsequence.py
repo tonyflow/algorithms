@@ -2,7 +2,6 @@ from typing import *
 
 
 class Solution:
-
     def increasingTriplet(self, nums: List[int]) -> bool:
         dp: List[int] = [1] * len(nums)
 
@@ -27,7 +26,7 @@ class Solution:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution: Solution = Solution()
     # print(solution.increasingTriplet([4, 5, 2147483647, 1, 2]))
     print(solution.increasingTriplet([5, 1, 6]))

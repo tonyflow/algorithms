@@ -1,10 +1,8 @@
 class Solution:
-
     def __init__(self):
         self.longest_length: int = 0
 
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
-
         if text1 == text2:
             return len(text1)
 
@@ -12,10 +10,7 @@ class Solution:
 
         return self.longest_length
 
-    def traverse(self,
-                 a: str,
-                 b: str,
-                 local_longest: int):
+    def traverse(self, a: str, b: str, local_longest: int):
         """
         abc
         bc
@@ -46,8 +41,7 @@ class Solution:
         self.traverse(a[1:], b, local_longest)
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     print(Solution().longestCommonSubsequence("abcde", "ace"))
     print(Solution().longestCommonSubsequence("abc", "abc"))
     print(Solution().longestCommonSubsequence("abc", "def"))

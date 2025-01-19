@@ -4,4 +4,4 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 
     def __repr__(self):
-        return f'val=[{self.val}], neighbors=[{self.neighbors}]'
+        return f"val=[{self.val}], neighbors=[{self.neighbors}]"

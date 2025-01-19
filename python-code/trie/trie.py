@@ -33,15 +33,15 @@ class Trie:
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     trie: Trie = Trie()
-    trie.insert('sarcastic')
-    print(trie.search('sarcastic'))
-    print(trie.starts_with('sar'))
-    print(trie.starts_with('sarcasti'))
-    print(trie.starts_with('FOO'))
-    print(trie.search('cat'))
-    '''
+    trie.insert("sarcastic")
+    print(trie.search("sarcastic"))
+    print(trie.starts_with("sar"))
+    print(trie.starts_with("sarcasti"))
+    print(trie.starts_with("FOO"))
+    print(trie.search("cat"))
+    """
     Space: O(m), m = average number of characters in the strings inserted
     Runtime: O(m), dito
-    '''
+    """

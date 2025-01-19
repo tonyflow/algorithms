@@ -10,8 +10,8 @@ class Card(NamedTuple):
 
 
 class FrenchDeck:
-    ranks: List[str] = [str(n) for n in range(2, 11)] + list('JKQA')
-    suits: List[str] = 'spades hearts diamonds clubs'.split()
+    ranks: List[str] = [str(n) for n in range(2, 11)] + list("JKQA")
+    suits: List[str] = "spades hearts diamonds clubs".split()
 
     def __init__(self):
         self._deck = [Card(r, s) for r in self.ranks for s in self.suits]
@@ -31,7 +31,7 @@ def spades_high(card: Card) -> int:
     return rank_value * len(suit_values) + suit_values[card.suit]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(type(list(suit_values.keys())))
 
     deck: FrenchDeck = FrenchDeck()
@@ -51,8 +51,8 @@ if __name__ == '__main__':
         print(c)
 
     # Contains
-    print(Card('1', 'foo') in deck)
-    print(Card('A', 'spades') in deck)
+    print(Card("1", "foo") in deck)
+    print(Card("A", "spades") in deck)
 
     # # sorting
     # sorted_deck =

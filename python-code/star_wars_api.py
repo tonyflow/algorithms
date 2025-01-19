@@ -11,21 +11,25 @@ class Planet(NamedTuple):
 
 
 def get_planets() -> Iterator[Planet]:
-    next_page: str = 'https://swapi.dev/api/planets'
+    next_page: str = "https://swapi.dev/api/planets"
     while next_page:
         response = get(next_page)
         if response.status_code == 200:
             json_content = json.loads(response.content)
-            print(f'Processing page {next_page}')
-            if 'results' in json_content and json_content['results']:
-                for planet in json_content['results']:
-                    yield Planet(name=planet['name'],
-                                 terrain=planet['terrain'],
-                                 diameter=int(planet['diameter']) if planet['diameter'].isnumeric() else 0)
+            print(f"Processing page {next_page}")
+            if "results" in json_content and json_content["results"]:
+                for planet in json_content["results"]:
+                    yield Planet(
+                        name=planet["name"],
+                        terrain=planet["terrain"],
+                        diameter=int(planet["diameter"])
+                        if planet["diameter"].isnumeric()
+                        else 0,
+                    )
 
-                next_page = json_content['next']
+                next_page = json_content["next"]
         else:
-            raise Exception('Unable to consume API')
+            raise Exception("Unable to consume API")
 
 
 def get_terrain(planet_name: str) -> Optional[str]:
@@ -35,11 +39,11 @@ def get_terrain(planet_name: str) -> Optional[str]:
 
 def get_biggest_planet() -> Optional[str]:
     biggest_planet = max(get_planets(), key=lambda p: p.diameter)
-    print(f'Found biggest planet with diameter {biggest_planet.diameter} km')
+    print(f"Found biggest planet with diameter {biggest_planet.diameter} km")
     return biggest_planet.name
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     retrier: Retrier = Retrier()
     for planet in retrier.retry(get_planets):
         print(planet)

@@ -39,7 +39,6 @@ class Solution:
     """
 
     def splitArray(self, nums: List[int], k: int) -> int:
-
         left, right = max(nums), sum(nums)
 
         def can_split(candidate_sum: int) -> bool:
@@ -65,7 +64,7 @@ class Solution:
         return left
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution: Solution = Solution()
     print(solution.splitArray([7, 2, 5, 10, 8], 2))
     print(solution.splitArray([1, 4, 4], 3))

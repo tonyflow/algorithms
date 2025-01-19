@@ -18,7 +18,7 @@ def list_changer(a_list: List[int]):
     print(a_list)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     b = 4
     method_a_immutable_objects(b)
     print(b)
@@ -28,6 +28,6 @@ if __name__ == '__main__':
 
     c = [1, 2, 3]
     list_changer(c)
-    print(f'Original c list: {c}')
+    print(f"Original c list: {c}")
     method_a_mutable_objects(c)
-    print(f'Updated list {c}')
+    print(f"Updated list {c}")

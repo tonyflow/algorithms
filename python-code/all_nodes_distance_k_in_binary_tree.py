@@ -40,10 +40,7 @@ def create_graph(root: TreeNode):
     graph[root] = root_neighbors
 
 
-def traverse_bfs(root: TreeNode,
-                 distance: int,
-                 k: int,
-                 result: List[TreeNode]) -> None:
+def traverse_bfs(root: TreeNode, distance: int, k: int, result: List[TreeNode]) -> None:
     if root is None:
         return
 
@@ -54,11 +51,9 @@ def traverse_bfs(root: TreeNode,
     traverse_bfs(root.right, distance + 1, k, result)
 
 
-def tree_dfs(root: TreeNode,
-             distance: int,
-             k: int,
-             visited: Set,
-             result: List[TreeNode]):
+def tree_dfs(
+    root: TreeNode, distance: int, k: int, visited: Set, result: List[TreeNode]
+):
     if root is None:
         return
 
@@ -72,7 +67,7 @@ def tree_dfs(root: TreeNode,
             tree_dfs(v, distance + 1, k, visited, result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     visited: Set = set()
     result: List[TreeNode] = []
     a: TreeNode = TreeNode(1)

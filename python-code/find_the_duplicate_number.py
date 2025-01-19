@@ -110,7 +110,7 @@ class Solution:
                 return None
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution: Solution = Solution()
     # print(solution.find_duplicates_array_manipulation([5, 3, 1, 2, 1]))
     print("Leet code approach")

@@ -1,14 +1,14 @@
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
        + and * on sequences
        """
     print([1, 2, 3] * 5)
-    print('abc' * 5)
+    print("abc" * 5)
 
-    ttt_board = [['_'] * 3 for _ in range(3)]
-    print(f'Tic Tac Toe board {ttt_board}')
-    ttt_board[0][1] = 'O'
-    print(f'Tic Tac Toe board after a move{ttt_board}')
+    ttt_board = [["_"] * 3 for _ in range(3)]
+    print(f"Tic Tac Toe board {ttt_board}")
+    ttt_board[0][1] = "O"
+    print(f"Tic Tac Toe board after a move{ttt_board}")
 
     """
     The following code is syntactic sugar for this
@@ -18,10 +18,10 @@ if __name__ == '__main__':
         board.append(row)
     The outer list has a reference to one inner list. SINCE IT APPENDS THE SAME ROW OVER AND OVER AGAIN
     """
-    weird_tt_board = [['_'] * 3] * 3
-    print(f'Weird/Wrong Tic Tac Toe board {weird_tt_board}')
-    weird_tt_board[0][1] = 'O'
-    print(f'Weird/Wrong Tic Tac Toe board after a move{weird_tt_board}')
+    weird_tt_board = [["_"] * 3] * 3
+    print(f"Weird/Wrong Tic Tac Toe board {weird_tt_board}")
+    weird_tt_board[0][1] = "O"
+    print(f"Weird/Wrong Tic Tac Toe board after a move{weird_tt_board}")
 
     """
     This covers augmented assignment operators += and *= in sequences.

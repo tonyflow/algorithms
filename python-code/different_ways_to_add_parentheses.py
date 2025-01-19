@@ -2,7 +2,7 @@ from typing import *
 
 
 class Solution:
-    valid_operators: List[str] = ['-', '+', '8', '/']
+    valid_operators: List[str] = ["-", "+", "8", "/"]
 
     def diffWaysToCompute(self, expression: str) -> List[int]:
         iter_results: List[int] = []
@@ -16,22 +16,26 @@ class Solution:
         for i in range(len(expression)):
             if expression[i].isdigit():
                 left_part_results: List[int] = self.diffWaysToCompute(expression[:i])
-                right_part_results: List[int] = self.diffWaysToCompute(expression[i + 1:])
+                right_part_results: List[int] = self.diffWaysToCompute(
+                    expression[i + 1 :]
+                )
                 for left_result in left_part_results:
                     for right_result in right_part_results:
-                        partial: int = self.apply_operator(expression[i], left_result, right_result)
+                        partial: int = self.apply_operator(
+                            expression[i], left_result, right_result
+                        )
                         iter_results.append(partial)
 
         return iter_results
 
     def apply_operator(self, operator: str, i: int, j: int) -> int:
-        if operator == '+':
+        if operator == "+":
             return i + j
-        elif operator == '-':
+        elif operator == "-":
             return i - j
-        elif operator == '*':
+        elif operator == "*":
             return i * j
-        elif operator == '/':
+        elif operator == "/":
             return i // j
         else:
-            raise Exception('Not a valid operator')
+            raise Exception("Not a valid operator")

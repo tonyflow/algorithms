@@ -8,7 +8,7 @@ or return other functions
 
 
 def power(num: int, exponent: int) -> int:
-    return num ** exponent
+    return num**exponent
 
 
 @lru_cache(maxsize=None)
@@ -22,7 +22,7 @@ def add_by_reduction(l: List[int]) -> int:
     return reduce(lambda x, y: x + y, l)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # square = partial(power, exponent=2)
     # print(square(3))
 

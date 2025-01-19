@@ -1,6 +1,6 @@
 from typing import List
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     Python allows slicing lists and strings without raising an error, 
     even if the indices are out of bounds:

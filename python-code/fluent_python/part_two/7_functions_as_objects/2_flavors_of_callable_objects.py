@@ -24,13 +24,13 @@ class BingoCage:
         try:
             return self._items.pop()
         except IndexError:
-            raise LookupError('pick up from empty items list')
+            raise LookupError("pick up from empty items list")
 
     def __call__(self, *args, **kwargs):
         return self.pick()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     There are also user-defined callable types!!! A class implementing __call__ is an easy way to create function-like
     objects that have some internal state that must be kept across invocations, like the remaining items of the BingoCage

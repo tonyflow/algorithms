@@ -1,12 +1,12 @@
 import heapq
 
 
-
 class MedianFinder:
     """
     There are some edge cases that this code does not cover
     TODO: Review this code
     """
+
     def __init__(self):
         self.left_pq = []
         self.right_pq = []
@@ -36,7 +36,7 @@ class MedianFinder:
             return self.right_pq[0]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     median_finder: MedianFinder = MedianFinder()
     median_finder.addNum(1)
     median_finder.addNum(2)

@@ -5,7 +5,7 @@ import os
 
 
 def square(number: int) -> int:
-    print(f'[process_id={os.getpid()}] producing {number * number}')
+    print(f"[process_id={os.getpid()}] producing {number * number}")
     return number * number
 
 
@@ -22,7 +22,7 @@ def using_multiprocessing_pool() -> Generator[int, None, None]:
         yield pool.map(square, numbers)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     task_futures: List[Future[int]] = using_process_poll_executor()
     results: List[int] = [r.result() for r in task_futures]
     print(results)

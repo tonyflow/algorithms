@@ -15,38 +15,43 @@ class TetrisBoard:
         self.board: List[List[str]] = []
 
         for i in range(m):
-            self.board.append(['.'] * (n - 1))
+            self.board.append(["."] * (n - 1))
 
         # self.draw_board()
 
     def draw_board(self):
         # os.system('cls' if os.name == 'nt' else 'clear')
-        print('\n' * 100)
+        print("\n" * 100)
         for i, row in enumerate(self.board):
             print(f'{i} {' '.join(row)}\n')
 
-        print('\n\n\n')
+        print("\n\n\n")
 
     def compute_next_position(self, piece_next: Piece) -> Optional[Piece]:
-        new_coordinates: List[Tuple[int, int]] = [(x + 1, y) for x, y in piece_next.coordinates]
+        new_coordinates: List[Tuple[int, int]] = [
+            (x + 1, y) for x, y in piece_next.coordinates
+        ]
 
         # Housekeeping
         # contain piece inside board limits
-        return Piece(new_coordinates) if self._check_inside_board(new_coordinates) else None
+        return (
+            Piece(new_coordinates)
+            if self._check_inside_board(new_coordinates)
+            else None
+        )
 
     def _check_inside_board(self, new_coordinates: List[Tuple[int, int]]):
         return all([0 <= c[0] < self.m and 0 <= c[1] < self.n for c in new_coordinates])
 
     def draw_piece(self, piece_to_draw: Piece):
         for coordinate in piece_to_draw.coordinates:
-            self.board[coordinate[0]][coordinate[1]] = 'o'
+            self.board[coordinate[0]][coordinate[1]] = "o"
 
     def clear_piece(self, piece_to_clear: Piece):
         for coordinate in piece_to_clear.coordinates:
-            self.board[coordinate[0]][coordinate[1]] = '.'
+            self.board[coordinate[0]][coordinate[1]] = "."
 
     def fall(self, piece_to_drop: Piece):
-
         """
         Stops falling when one of the coordinates overlaps with an already drawn part of the board
         - compute the next coordinates
@@ -71,11 +76,15 @@ class TetrisBoard:
 
     def fix_piece(self, piece_to_fix: Piece):
         for coordinate in piece_to_fix.coordinates:
-            self.board[coordinate[0]][coordinate[1]] = 'x'
+            self.board[coordinate[0]][coordinate[1]] = "x"
 
     def does_not_overlap(self, potentially_overlapping_piece: Piece) -> bool:
-        return all([self.board[coordinate[0]][coordinate[1]] != 'x' for coordinate in
-                    potentially_overlapping_piece.coordinates])
+        return all(
+            [
+                self.board[coordinate[0]][coordinate[1]] != "x"
+                for coordinate in potentially_overlapping_piece.coordinates
+            ]
+        )
 
 
 if __name__ == "__main__":

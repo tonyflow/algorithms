@@ -13,7 +13,7 @@ class Singleton(metaclass=SingletonMeta):
         self.value = value
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a = Singleton(10)
     b = Singleton(30)
 

@@ -15,10 +15,6 @@ class Solution:
         return pq[0]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution: Solution = Solution()
-    print(
-        solution.kthSmallest(
-            matrix=[[1, 5, 9], [10, 11, 13], [12, 13, 15]],
-            k=8)
-    )
+    print(solution.kthSmallest(matrix=[[1, 5, 9], [10, 11, 13], [12, 13, 15]], k=8))

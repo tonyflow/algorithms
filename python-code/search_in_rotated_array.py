@@ -21,7 +21,7 @@ def search_in_rotated(r: List[int], target: int) -> int:
 
     # Perform binary search
     while start < end:
-        middle = (start + end)
+        middle = start + end
         if target > r[middle]:
             start = middle + 1
         elif target < r[middle]:
@@ -32,5 +32,5 @@ def search_in_rotated(r: List[int], target: int) -> int:
     return -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(search_in_rotated([7, 8, 9, 10, 1, 2], 8))

@@ -24,7 +24,7 @@ def combinations_producer():
         print(c)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a = [1, 2, 3, 4]
     b = [5, 6, 7, 8]
     # chain_collections(a, b)

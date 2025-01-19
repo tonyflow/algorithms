@@ -3,7 +3,6 @@ from tree_node import TreeNode
 
 
 class Solution:
-
     def __init__(self):
         self.answer: int = 0
 

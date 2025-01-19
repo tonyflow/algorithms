@@ -21,25 +21,27 @@ class ImageDownloader:
 
     def get_fully_qualified_output_path(self, img_url: str) -> str:
         target_file_name = hash(img_url)
-        return os.path.join(self.target_dir, 'images', f'{target_file_name}.jpg')
+        return os.path.join(self.target_dir, "images", f"{target_file_name}.jpg")
 
     def create_single_downloader_task(self, json_file: Path):
         with open(json_file) as f:
             if not self.is_empty(json_file):
-                print(f'[thread_id: {get_ident()}] Processing JSON file {json_file}')
+                print(f"[thread_id: {get_ident()}] Processing JSON file {json_file}")
                 json_content = json.load(f)
                 for json_image_content in json_content:
-                    img_url = json_image_content['url']
-                    print(f'\t\t ... processing URL {img_url}')
+                    img_url = json_image_content["url"]
+                    print(f"\t\t ... processing URL {img_url}")
                     response = requests.get(url=img_url)
-                    fully_qualified_target_path = self.get_fully_qualified_output_path(img_url)
-                    with open(fully_qualified_target_path, 'wb') as output_f:
+                    fully_qualified_target_path = self.get_fully_qualified_output_path(
+                        img_url
+                    )
+                    with open(fully_qualified_target_path, "wb") as output_f:
                         output_f.write(response.content)
             else:
-                print(f'{json_file} is empty. Skipping processing')
+                print(f"{json_file} is empty. Skipping processing")
 
     def create_all_downloader_tasks(self) -> List[Thread]:
-        for json_file in self.sources_dir.glob('**/*.json'):
+        for json_file in self.sources_dir.glob("**/*.json"):
             yield Thread(target=self.create_single_downloader_task(json_file))
 
     def start_download(self):
@@ -52,9 +54,9 @@ class ImageDownloader:
             wt.join()
 
 
-if __name__ == '__main__':
-    a_sources_dir = Path('./test_resources')
-    a_target_dir = Path('./test_resources')
+if __name__ == "__main__":
+    a_sources_dir = Path("./test_resources")
+    a_target_dir = Path("./test_resources")
 
     image_downloader: ImageDownloader = ImageDownloader(a_sources_dir, a_target_dir)
     image_downloader.start_download()

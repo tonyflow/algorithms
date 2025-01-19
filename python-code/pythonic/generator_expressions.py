@@ -2,7 +2,7 @@ from typing import List, Iterator, Generator
 
 
 def do_generate(a_i: int) -> str:
-    return str(a_i ** 3)
+    return str(a_i**3)
 
 
 def generate_numbers() -> Iterator[int]:
@@ -28,17 +28,17 @@ def interactive_counter(initial: int) -> Generator[int, int, int]:
 
     """
     current = initial
-    print('Initialized current')
+    print("Initialized current")
     while True:
-        print('Inside infinite loop')
+        print("Inside infinite loop")
         increment = yield current  # Yield the current value and wait for a new increment
-        print(f'Increment initialized with {increment}')
+        print(f"Increment initialized with {increment}")
         if increment is None:  # If None is sent, break the loop
-            print('Increment was set to None: Breaking')
+            print("Increment was set to None: Breaking")
             break
-        print('Updating current\'s value')
+        print("Updating current's value")
         current += increment
-    print('Returning current')
+    print("Returning current")
     return current  # Return the last value of current when exiting
 
 
@@ -47,10 +47,10 @@ def fib(n: int) -> Iterator[int]:
     while a < n:
         yield a
         a, b = b, a + b
-        print(f'Updated a to {a} and b to {b}')
+        print(f"Updated a to {a} and b to {b}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # print(list(generate_numbers()))
     # counter: Generator[int, int, int] = interactive_counter(10)
     # print(next(counter))

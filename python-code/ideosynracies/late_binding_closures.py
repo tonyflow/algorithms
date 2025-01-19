@@ -1,6 +1,6 @@
 from typing import List, Callable
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     The following list comprehension creates a list of integers
     """
@@ -12,15 +12,19 @@ if __name__ == '__main__':
     The following list comprehension creating a list of functions/lambdas
     which take no arguments and return an integer in the rage [0,3)
     """
-    print("Testing list comprehensions producing no argument callables returning an int")
+    print(
+        "Testing list comprehensions producing no argument callables returning an int"
+    )
     func_other: List[Callable[[], int]] = [lambda: 1, lambda: 2, lambda: 3]
     for fo in func_other:
         print(fo())
 
-    print("Testing list comprehensions producing a string argument callable returning an int")
+    print(
+        "Testing list comprehensions producing a string argument callable returning an int"
+    )
     funcs_with_args: List[Callable[[str], int]] = [lambda x: 7 for _ in range(2)]
     for fwa in funcs_with_args:
-        print(fwa('this is a random string'))
+        print(fwa("this is a random string"))
 
     print("Now actually testing late binding")
     """

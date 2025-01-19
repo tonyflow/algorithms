@@ -2,13 +2,11 @@ from typing import *
 
 
 class Solution:
-
     def __init__(self):
-        self.alphabet: List[str] = [chr(ord('a') + i) for i in range(26)]
-        self.result = float('inf')
+        self.alphabet: List[str] = [chr(ord("a") + i) for i in range(26)]
+        self.result = float("inf")
 
     def minDistance(self, word1: str, word2: str) -> int:
-
         if not word1:
             return len(word2)
 
@@ -30,7 +28,7 @@ class Solution:
         return min(min_insertions_cost, min_deletions_cost, min_substitutions_cost)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # alphabet_upper_case: List[str] = [chr(i) for i in range(65, 91)]
     # print(alphabet_upper_case)
     #
@@ -44,4 +42,4 @@ if __name__ == '__main__':
     #     print(ord(letter))
 
     solution: Solution = Solution()
-    print(solution.minDistance('horse', 'ros'))
+    print(solution.minDistance("horse", "ros"))

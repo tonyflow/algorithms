@@ -2,7 +2,6 @@ from typing import *
 
 
 class TopologicalSort:
-
     def __init__(self, deps: List[Tuple[int, int]], number_of_jobs: int):
         """
         (x,y)
@@ -62,7 +61,7 @@ class TopologicalSort:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     deps: List[Tuple[int, int]] = [(1, 2), (2, 3), (3, 4)]
     topological_sort = TopologicalSort(deps, number_of_jobs=4)
     print(topological_sort.topological_sort())

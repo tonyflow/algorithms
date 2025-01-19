@@ -14,15 +14,13 @@ def is_hashable(o: Any) -> bool:
         return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     Tuples as records
     """
     lax_coordinates = (33.9425, -118.408056)
-    city, year, pop, chg, area = ('Tokyo', 2003, 32_450, 0.66, 8014)
-    traveler_ids = [('USA', '31195855'),
-                    ('BRA', 'CE342567'),
-                    ('ESP', 'XDA205856')]
+    city, year, pop, chg, area = ("Tokyo", 2003, 32_450, 0.66, 8014)
+    traveler_ids = [("USA", "31195855"), ("BRA", "CE342567"), ("ESP", "XDA205856")]
 
     # for passport in sorted(traveler_ids):
     #     print('%s/%s' % passport)
@@ -37,10 +35,10 @@ if __name__ == '__main__':
     2. Performance: A tuple uses less memory than a list of the same length, and it allows Python to do some 
     optimizations.
     """
-    tuple_immutable = (1, 'abc', (1, 2, 3))
-    tuple_mutable = (1, 'abc', [1, 2, 3])
-    print(f'Immutable tuple {is_hashable(tuple_immutable)}')
-    print(f'Mutable tuple {is_hashable(tuple_mutable)}')
+    tuple_immutable = (1, "abc", (1, 2, 3))
+    tuple_mutable = (1, "abc", [1, 2, 3])
+    print(f"Immutable tuple {is_hashable(tuple_immutable)}")
+    print(f"Mutable tuple {is_hashable(tuple_mutable)}")
 
     """
     Tuples are more efficient than lists:

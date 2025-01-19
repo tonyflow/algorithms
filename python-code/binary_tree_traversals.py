@@ -31,7 +31,7 @@ class TreeTraversals:
             while q:
                 q_size = len(q)
 
-                print(f'Processing level {level}')
+                print(f"Processing level {level}")
                 for _ in range(q_size):
                     # polled: TreeNode = q.popleft()
                     polled: TreeNode = q.pop(0)
@@ -44,7 +44,7 @@ class TreeTraversals:
                 level += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tt: TreeTraversals = TreeTraversals()
     root: TreeNode = TreeNode(10)
     root.left = TreeNode(7)
@@ -54,14 +54,14 @@ if __name__ == '__main__':
     root.left.right = TreeNode(8)
     root.left.left = TreeNode(6)
 
-    print('PRE ORDER')
+    print("PRE ORDER")
     tt.pre_order(root)
 
-    print('POST ORDER')
+    print("POST ORDER")
     tt.post_order(root)
 
-    print('IN ORDER')
+    print("IN ORDER")
     tt.in_order(root)
 
-    print('LEVEL ORDER')
+    print("LEVEL ORDER")
     tt.level_order(root)

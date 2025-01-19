@@ -19,5 +19,5 @@ def merge(heads: List[ListNode]) -> ListNode:
     return dummy.next
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pq = []

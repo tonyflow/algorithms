@@ -1,7 +1,7 @@
 from collections import deque
 from typing import Deque
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     Deque is optimised for accessing elements located at the ends of 
     the data structure

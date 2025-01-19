@@ -1,8 +1,8 @@
 def simple_decorator(func):
     def wrapper():
-        print('Before method call')
+        print("Before method call")
         result = func()
-        print('After method call')
+        print("After method call")
         return result
 
     return wrapper
@@ -17,9 +17,9 @@ def decorator_with_args(foo: int):
 
     def decorator(func):
         def wrapper(*args, **kwargs):
-            print(f'Before method call for {foo}')
+            print(f"Before method call for {foo}")
             result = func()
-            print(f'After method call for {foo}')
+            print(f"After method call for {foo}")
             return result
 
         return wrapper
@@ -30,14 +30,14 @@ def decorator_with_args(foo: int):
 # @simple_decorator
 @decorator_with_args(45)
 def hello():
-    print('Hello')
+    print("Hello")
 
 
 @simple_decorator
 def other():
-    print('Let us try this')
+    print("Let us try this")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     hello()
     other()

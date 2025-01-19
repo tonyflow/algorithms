@@ -1,6 +1,6 @@
 from typing import List
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     sorted VS list.sort
 
@@ -26,10 +26,12 @@ if __name__ == '__main__':
     print(sorted(using_sorted_list))
 
     # More examples
-    fruits = ['grape', 'raspberry', 'apple', 'banana']
-    print(f'Sorted default {sorted(fruits)}')
-    print(f'Sorted reverse {sorted(fruits, reverse=True)}')
-    print(f'Sorted using another key in reverse {sorted(fruits, key=len, reverse=True)}')
+    fruits = ["grape", "raspberry", "apple", "banana"]
+    print(f"Sorted default {sorted(fruits)}")
+    print(f"Sorted reverse {sorted(fruits, reverse=True)}")
+    print(
+        f"Sorted using another key in reverse {sorted(fruits, key=len, reverse=True)}"
+    )
 
     # Sorting in place
     fruits.sort()

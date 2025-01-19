@@ -15,7 +15,7 @@ class Solution:
         return -temp[0]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     solution: Solution = Solution()
     print(solution.findKthLargest([3, 2, 1, 5, 6, 4], 2))
     print(solution.findKthLargest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4))

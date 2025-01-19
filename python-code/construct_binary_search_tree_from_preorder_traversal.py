@@ -4,9 +4,9 @@ from tree_node import TreeNode
 
 
 class Solution:
-    '''
+    """
     Preorder => root,left,right
-    '''
+    """
 
     def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
         if not preorder:
@@ -21,7 +21,10 @@ class Solution:
         # Find the first element after which is smaller than root_val. This would be the root of the right sub_tree
         first_bigger_index_faulty: int = 0
 
-        while first_bigger_index_faulty != len(preorder) - 1 and preorder[first_bigger_index_faulty] <= root_val:
+        while (
+            first_bigger_index_faulty != len(preorder) - 1
+            and preorder[first_bigger_index_faulty] <= root_val
+        ):
             first_bigger_index_faulty += 1
 
         first_bigger_index = bisect.bisect(preorder, preorder[0])
@@ -32,7 +35,7 @@ class Solution:
         return root
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # [8,5,1,7,10,12]
     # root = Solution().bstFromPreorder([8, 5, 1, 7, 10, 12])
     root = Solution().bstFromPreorder([4, 2])

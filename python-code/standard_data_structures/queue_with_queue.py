@@ -1,6 +1,6 @@
 from queue import Queue
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     q: Queue = Queue()
     q.put(5)
     q.put(6)

@@ -15,6 +15,7 @@ class DecoratedCoordinate:
     """
     The data class decorator also provides type hints for the attributes defined in the class
     """
+
     lat: float
     lon: float
 
@@ -23,6 +24,7 @@ class CoordinateTuple(NamedTuple):
     """
     This is a metaclass and not a subclass of NamedTuple
     """
+
     lat: float
     lon: float
 
@@ -39,10 +41,10 @@ class Coordinate:
         self.latitude = latitude
 
     def __repr__(self):
-        return f'Coordinate({self.longitude},{self.latitude})'
+        return f"Coordinate({self.longitude},{self.latitude})"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     Using the data class that we created ourselves:
     - Does not provide a meaningful __repr__ implementation unless we override it ourselves
@@ -60,7 +62,7 @@ if __name__ == '__main__':
     
     The following is a named tuple implementation coming from the collections module
     """
-    NamedTupleCoordinate = namedtuple('Coordinate', 'lat lon')
+    NamedTupleCoordinate = namedtuple("Coordinate", "lat lon")
     print(issubclass(NamedTupleCoordinate, tuple))
     print(get_type_hints(NamedTupleCoordinate))
     named_a: NamedTupleCoordinate = NamedTupleCoordinate(1.23, 4.56)
@@ -72,7 +74,9 @@ if __name__ == '__main__':
     NamedTuple from the typing module
     """
     # TypingNamedTupleCoordinate = NamedTuple('TypingNamedTupleCoordinate', [('lat', float), ('lon', float)])
-    TypingNamedTupleCoordinate = NamedTuple('TypingNamedTupleCoordinate', lat=float, lon=float)
+    TypingNamedTupleCoordinate = NamedTuple(
+        "TypingNamedTupleCoordinate", lat=float, lon=float
+    )
     print(issubclass(TypingNamedTupleCoordinate, tuple))
     print(get_type_hints(TypingNamedTupleCoordinate))
 

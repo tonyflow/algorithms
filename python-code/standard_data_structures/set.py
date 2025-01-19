@@ -1,6 +1,6 @@
 from typing import Set
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s: Set = set()
 
     for _ in range(5):

@@ -12,7 +12,7 @@ def find_cartesian(r: list, current: int, partial: list, a_result: list):
         partial.pop()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     result = []
     # find_cartesian([[1, 2, 3], [4, 5]], 0, [], result)
     find_cartesian([[1, 2, 3]], 0, [], result)

@@ -3,19 +3,21 @@ import re
 
 def value(roman: str) -> int | None:
     roman_mapping = {
-        'i': 1,
-        'v': 5,
-        'x': 10,
-        'l': 50,
-        'c': 100,
-        'd': 500,
-        'm': 1000,
+        "i": 1,
+        "v": 5,
+        "x": 10,
+        "l": 50,
+        "c": 100,
+        "d": 500,
+        "m": 1000,
     }
 
     roman_lower = roman.lower()
     included_characters = {c for c in roman_lower}
 
-    if not included_characters or not included_characters.issubset(roman_mapping.keys()):
+    if not included_characters or not included_characters.issubset(
+        roman_mapping.keys()
+    ):
         return None
 
     last_digit = roman_lower[0]
@@ -50,9 +52,9 @@ def _matches(test_name: str, input: str, expected: int | None):
         f"{test_name} passed."
         if is_correct
         else f" {test_name} failed. Got "
-             + str(actual_value)
-             + ", expected "
-             + str(expected)
+        + str(actual_value)
+        + ", expected "
+        + str(expected)
     )
 
 
