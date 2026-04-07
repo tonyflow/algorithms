@@ -12,13 +12,13 @@ class Solution:
 
         # visited: list[list[bool]] = [[False for _ in range(len(grid[0]))] for _ in range(len(grid))]
         # self.traverse_based_on_rules(0, 0, grid, 0, visited)
+        # return Solution.min_cost
 
         memoized: list[list[int]] = [
             [-1] for _ in range(len(grid[0])) for _ in range(len(grid))
         ]
         self.traverse_based_on_rules_with_memoization(0, 0, grid, 0, memoized)
-
-        return Solution.min_cost
+        return memoized[0][0]
 
     def traverse_based_on_rules_with_memoization(
         self,
@@ -29,11 +29,12 @@ class Solution:
         memoized: list[list[int]],
     ) -> float:
         if not self.in_grid(i, j, grid):
-            return
+            return float("inf")
 
         if self.reached_the_end(i, j, grid):
             Solution.min_cost = min(Solution.min_cost, path_cost)
-            return
+            # TODO What should I do here?
+            return float("")
 
         if memoized[i][j] != -1:
             return memoized[i][j]
@@ -49,7 +50,7 @@ class Solution:
                 )
 
                 # 2. Charge direction
-                min_cost_change_direction_right = (
+                min_cost_change_direction_left = (
                     self.traverse_based_on_rules_with_memoization(
                         i, j - 1, grid, path_cost + 1, memoized
                     )
@@ -64,56 +65,107 @@ class Solution:
                         i + 1, j, grid, path_cost + 1, memoized
                     )
                 )
+
+                min_overall = min(
+                    min_cost_normal_case,
+                    min_cost_change_direction_left,
+                    min_cost_change_direction_up,
+                    min_cost_change_direction_down,
+                )
             case 2:
                 # 1. Either follow this direction OR
-                self.traverse_based_on_rules_with_memoization(
+                min_cost_normal_case = self.traverse_based_on_rules_with_memoization(
                     i, j - 1, grid, path_cost, memoized
                 )
 
                 # 2. Charge direction
-                self.traverse_based_on_rules_with_memoization(
-                    i, j + 1, grid, path_cost + 1, memoized
+                min_cost_change_direction_right = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i, j + 1, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i - 1, j, grid, path_cost + 1, memoized
+                min_cost_change_direction_up = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i - 1, j, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i + 1, j, grid, path_cost + 1, memoized
+                min_cost_change_direction_down = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i + 1, j, grid, path_cost + 1, memoized
+                    )
+                )
+
+                min_overall = min(
+                    min_cost_normal_case,
+                    min_cost_change_direction_right,
+                    min_cost_change_direction_up,
+                    min_cost_change_direction_down,
                 )
             case 3:
                 # 1. Either follow this direction OR
-                self.traverse_based_on_rules_with_memoization(
+                min_normal_cost = self.traverse_based_on_rules_with_memoization(
                     i + 1, j, grid, path_cost, memoized
                 )
 
                 # 2. Charge direction
-                self.traverse_based_on_rules_with_memoization(
-                    i - 1, j, grid, path_cost + 1, memoized
+                min_cost_change_direction_up = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i - 1, j, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i, j + 1, grid, path_cost + 1, memoized
+                min_cost_change_direction_right = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i, j + 1, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i, j - 1, grid, path_cost + 1, memoized
+                min_cost_change_direction_left = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i, j - 1, grid, path_cost + 1, memoized
+                    )
                 )
+
+                min_overall = min(
+                    min_normal_cost,
+                    min_cost_change_direction_up,
+                    min_cost_change_direction_right,
+                    min_cost_change_direction_left,
+                )
+
             case 4:
                 # 1. Either follow this direction OR
-                self.traverse_based_on_rules_with_memoization(
+                min_normal_cost = self.traverse_based_on_rules_with_memoization(
                     i - 1, j, grid, path_cost, memoized
                 )
 
                 # 2. Charge direction
-                self.traverse_based_on_rules_with_memoization(
-                    i + 1, j, grid, path_cost + 1, memoized
+                min_cost_change_direction_down = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i + 1, j, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i, j + 1, grid, path_cost + 1, memoized
+                min_cost_change_direction_right = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i, j + 1, grid, path_cost + 1, memoized
+                    )
                 )
-                self.traverse_based_on_rules_with_memoization(
-                    i, j - 1, grid, path_cost + 1, memoized
+                min_cost_change_direction_left = (
+                    self.traverse_based_on_rules_with_memoization(
+                        i, j - 1, grid, path_cost + 1, memoized
+                    )
+                )
+
+                min_overall = min(
+                    min_normal_cost,
+                    min_cost_change_direction_down,
+                    min_cost_change_direction_right,
+                    min_cost_change_direction_left,
                 )
             case other:
                 raise ValueError(f"Cannot process {other}")
+
+        memoized[i][j] = min_overall
+
+        return memoized[i][j]
 
     def traverse_based_on_rules(
         self,
