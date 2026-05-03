@@ -1,4 +1,6 @@
-.idea
-out
+.idea/*
+out/*
 algorithms.iml
 target
+.DS_Store/*
+
